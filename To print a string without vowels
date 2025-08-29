@@ -1,0 +1,15 @@
+name = input("Enter your name ")
+
+total_length= len(name)
+# print(total_length)
+result = ""
+for i in range(total_length):
+    # print(name[i])
+    if name[i] == "a" or name[i] == "e" or name[i] == "i" or name[i] == "o" or name[i] == "u":
+        continue
+        # print("It is a vowel")
+        # # print(name[i])
+    else:
+        result += name[i]
+print(result)
+
