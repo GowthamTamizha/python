@@ -5360,8 +5360,7 @@ def change_key_value():
         print(f"{i}. {report['reportName']} - {report['displayName']}")
 
     try:
-        selection_input = input(
-            "\nEnter report number(s) to modify (e.g., '1' for single, '1,3' for multiple, or 'all'): ").strip()
+        selection_input = input("\nEnter report number(s) to modify (e.g., '1', '1,3', or 'all'): ").strip()
 
         if selection_input.lower() == 'all':
             reports_to_modify = data
