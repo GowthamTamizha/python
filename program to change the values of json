@@ -1,0 +1,5406 @@
+import json
+
+
+def change_key_value():
+    data = [
+  {
+    "reportName": "EXPENSES_REPORT",
+    "displayName": "Expenses Report",
+    "pathURL": "/report",
+    "accessToRoles": [
+      "PROJECT_MANAGER",
+      "SITE_ADMIN",
+      "ADMIN",
+      "TRANSPORT_MANAGER",
+      "TRANSPORT_MANAGER_NO_BILLING",
+      "VENDOR_MANAGER",
+      "ROUTE_MANAGER",
+      "OPERATIONS"
+    ],
+    "isEnabled": True,
+    "sendEmail": False,
+    "reportType": "Billing",
+    "reportParams": {
+      "bunitIdKey": "bunit",
+      "startDateKey": "startDate",
+      "endDateKey": "endDate"
+    },
+    "reportHeaders": [
+      "Duty Date",
+      "Cab Id",
+      "Registration No",
+      "Vendor",
+      "Cab Type",
+      "Trip Id",
+      "Trip Date",
+      "Expense Type",
+      "Expense Amount",
+      "Expense Status",
+      "Comment",
+      "Source of Data",
+      "Expense Added On"
+    ],
+    "dependentJobs": [
+      "RBD",
+      "EXPENSES_JOB",
+      "TRIP_FACT"
+    ]
+  },
+  {
+    "reportName": "First_Pickup_Delay_Report",
+    "displayName": "First Pickup Delay Report",
+    "pathURL": "/metabase-report",
+    "accessToRoles": [
+      "PROJECT_MANAGER",
+      "SITE_ADMIN",
+      "ADMIN",
+      "TRANSPORT_MANAGER",
+      "TRANSPORT_MANAGER_NO_BILLING",
+      "VENDOR_MANAGER",
+      "ROUTE_MANAGER",
+      "OPERATIONS"
+    ],
+    "isEnabled": True,
+    "sendEmail": True,
+    "reportType": "Operations Metrics",
+    "reportParams": {
+      "bunitIdKey": "bunit",
+      "startDateKey": "startDate",
+      "endDateKey": "endDate"
+    },
+    "reportHeaders": [
+      "Bunit ID",
+      "Trip ID",
+      "First Employee ID",
+      "First Employee Name",
+      "Trip Date",
+      "Shift Time",
+      "First Pickup Planned Time",
+      "Driver Reporting Time",
+      "Time Difference",
+      "First Pickup Delay Bucket",
+      "Boarding Status",
+      "Is No Show",
+      "Actual Vendor Cab ID",
+      "Actual Cab Registration",
+      "Driver Name",
+      "No Show Marked By"
+    ],
+    "metabaseColumns": [
+      "bunit_id",
+      "trip_id",
+      "first_employee_id",
+      "first_employee_name",
+      "trip_date",
+      "shift_time",
+      "first_pickup_planned_time",
+      "driver_reporting_time",
+      "time_difference",
+      "first_pickup_delay_bucket",
+      "boarding_status",
+      "is_no_show",
+      "actual_vendor_cab_id",
+      "actual_cab_registration",
+      "driver_name",
+      "no_show_marked_by"
+    ],
+    "cardId": 69887
+  },
+  {
+    "reportName": "SAP_Future_Schedule_Data",
+    "displayName": "Future Schedule Data",
+    "pathURL": "/metabase-report",
+    "accessToRoles": [
+      "PROJECT_MANAGER",
+      "SITE_ADMIN",
+      "ADMIN",
+      "TRANSPORT_MANAGER",
+      "TRANSPORT_MANAGER_NO_BILLING",
+      "VENDOR_MANAGER",
+      "ROUTE_MANAGER"
+    ],
+    "isEnabled": True,
+    "sendEmail": True,
+    "reportType": "Operations Metrics",
+    "reportParams": {
+      "bunitIdKey": "bunit",
+      "startDateKey": "startDate",
+      "endDateKey": "endDate"
+    },
+    "reportHeaders": [
+      "Event Date",
+      "Trip Type",
+      "Shift",
+      "Schedule Count"
+    ],
+    "metabaseColumns": [
+      "event_date",
+      "trip_type",
+      "shift",
+      "schedule_count"
+    ],
+    "cardId": 66124
+  },
+  {
+    "reportName": "New_Indemnification_Report",
+    "displayName": "Indemnification Report (New)",
+    "jasperReportName": "New_Indemnification_Report",
+    "jasperReportPath": "/reports/MoveinSync_Public/Reports/Reporting_Service/New_Indemnification_Report",
+    "pathURL": "/jasper-report",
+    "accessToRoles": [
+      "PROJECT_MANAGER",
+      "SITE_ADMIN",
+      "ADMIN",
+      "TRANSPORT_MANAGER",
+      "TRANSPORT_MANAGER_NO_BILLING",
+      "VENDOR_MANAGER",
+      "ROUTE_MANAGER"
+    ],
+    "isEnabled": True,
+    "sendEmail": True,
+    "reportType": "Operations Metrics",
+    "reportParams": {
+      "bunitIdKey": "bunit_id_1",
+      "startDateKey": "trip_date_1",
+      "endDateKey": "trip_date_2",
+      "otherKey": ""
+    },
+    "jasperColumns": [
+      "bunit_id",
+      "Trip_date",
+      "employee_id",
+      "employee_name",
+      "Indemnified",
+      "Indemnification_date",
+      "indemnification_type",
+      "Trip_direction",
+      "shift",
+      "reason",
+      "channel",
+      "Trip_status",
+      "profile_offce",
+      "project_name",
+      "RM_Email_ID"
+    ],
+    "reportColumns": [
+      "bunit_id",
+      "Trip_date",
+      "employee_id",
+      "employee_name",
+      "Indemnified",
+      "Indemnification_date",
+      "indemnification_type",
+      "Trip_direction",
+      "shift",
+      "reason",
+      "channel",
+      "Trip_status",
+      "profile_offce",
+      "project_name",
+      "RM_Email_ID"
+    ],
+    "reportHeaders": [
+      "Bunit Id",
+      "Trip Date",
+      "Employee Id",
+      "Employee Name",
+      "Indemnified",
+      "Indemnification Date",
+      "Indemnification Type",
+      "Trip Direction",
+      "Shift",
+      "Reason",
+      "Channel",
+      "Trip Status",
+      "Profile Office",
+      "Project Name",
+      "Rm Email Id"
+    ],
+    "dependentJobs": [
+      ""
+    ]
+  },
+  {
+    "reportName": "Waitlisted_Bookings_Report",
+    "displayName": "Waitlisted Bookings Report",
+    "jasperReportName": "Waitlisted_Bookings_Report",
+    "jasperReportPath": "/reports/MoveinSync_Public/Reports/Infosys/Waitlisted_Bookings_Report",
+    "pathURL": "/jasper-report",
+    "accessToRoles": [
+      "PROJECT_MANAGER",
+      "SITE_ADMIN",
+      "ADMIN",
+      "TRANSPORT_MANAGER",
+      "TRANSPORT_MANAGER_NO_BILLING",
+      "VENDOR_MANAGER",
+      "ROUTE_MANAGER",
+      "OPERATIONS"
+    ],
+    "isEnabled": True,
+    "sendEmail": True,
+    "reportType": "Operations Metrics",
+    "reportParams": {
+      "bunitIdKey": "organization_1",
+      "startDateKey": "Shift_date_1",
+      "endDateKey": "Shift_date_2",
+      "otherKey": ""
+    },
+    "jasperColumns": [
+      "booking_id",
+      "shift_date",
+      "emp_id",
+      "emp_name",
+      "seat_no",
+      "route_name",
+      "trip_direction",
+      "shift_time",
+      "pickup_loc",
+      "drop_loc",
+      "planned_pickup_time",
+      "planned_dropoff_time",
+      "status"
+    ],
+    "reportColumns": [
+      "booking_id",
+      "shift_date",
+      "emp_id",
+      "emp_name",
+      "seat_no",
+      "route_name",
+      "trip_direction",
+      "shift_time",
+      "pickup_loc",
+      "drop_loc",
+      "planned_pickup_time",
+      "planned_dropoff_time",
+      "status"
+    ],
+    "reportHeaders": [
+      "Booking id",
+      "Shift date",
+      "Employee id",
+      "Employee name",
+      "seat_no",
+      "Route name",
+      "Trip direction",
+      "Shift time",
+      "Pickup location",
+      "Drop location",
+      "Planned pickup time",
+      "Planned dropoff time",
+      "Status"
+    ],
+    "dependentJobs": [
+      "TRIP_FACT",
+      "EMP_FACT"
+    ]
+  },
+  {
+    "reportName": "RENTLZ_COST_CENTER_REPORT",
+    "displayName": "Cost Center Report",
+    "pathURL": "/report",
+    "accessToRoles": [
+      "PROJECT_MANAGER",
+      "SITE_ADMIN",
+      "ADMIN",
+      "TRANSPORT_MANAGER",
+      "TRANSPORT_MANAGER_NO_BILLING",
+      "VENDOR_MANAGER",
+      "ROUTE_MANAGER"
+    ],
+    "isEnabled": True,
+    "sendEmail": True,
+    "reportType": "Operations Metrics",
+    "reportParams": {
+      "bunitIdKey": "bunit",
+      "startDateKey": "startDate",
+      "endDateKey": "endDate"
+    },
+    "reportHeaders": [
+      "Vendor Name",
+      "Amazon Booking ID/Trip ID",
+      "Vendor Booking ID",
+      "Employee ID",
+      "Employee Name",
+      "Employee Cost Centre",
+      "Duty Date",
+      "User Email Id",
+      "Entity",
+      "Usage Location",
+      "Duty Type",
+      "No. of Days",
+      "Car Type",
+      "Vehicle Reg No",
+      "Grand Total",
+      "Approval/Rejection",
+      "Audit Comments",
+      "Actual CabType",
+      "Actual Cab Capacity"
+    ],
+    "dependentJobs": [
+      "TRIP_FACT",
+      "RBD"
+    ]
+  },
+  {
+    "reportName": "Attendance_Report",
+    "displayName": "Attendance Report",
+    "jasperReportName": "NoShow_Summary_Report",
+    "jasperReportPath": "/reports/MoveinSync_Public/Reports/tepl/NoShow_Summary_Report",
+    "pathURL": "/jasper-report",
+    "accessToRoles": [
+      "PROJECT_MANAGER",
+      "SITE_ADMIN",
+      "ADMIN",
+      "TRANSPORT_MANAGER",
+      "TRANSPORT_MANAGER_NO_BILLING",
+      "VENDOR_MANAGER",
+      "ROUTE_MANAGER",
+      "OPERATIONS"
+    ],
+    "isEnabled": True,
+    "sendEmail": True,
+    "reportType": "Operations Metrics",
+    "reportParams": {
+      "bunitIdKey": "bunit_id_1",
+      "startDateKey": "trip_date_1",
+      "endDateKey": "trip_date_2",
+      "otherKey": ""
+    },
+    "jasperColumns": [
+      "tripdate",
+      "trip_id",
+      "tag_data",
+      "employee_id",
+      "status",
+      "project",
+      "department",
+      "signintime",
+      "signouttime",
+      "shuttle_point",
+      "route_name"
+    ],
+    "reportColumns": [
+      "tripdate",
+      "trip_id",
+      "tag_data",
+      "employee_id",
+      "status",
+      "project",
+      "department",
+      "signintime",
+      "signouttime",
+      "shuttle_point",
+      "route_name"
+    ],
+    "reportHeaders": [
+      "Trip Date",
+      "Trip Id",
+      "Tag Data",
+      "Employee Id",
+      "Status",
+      "Project",
+      "Department",
+      "Actual Pickup Time",
+      "Actual Drop Time",
+      "Shuttle Point",
+      "Route Name"
+    ],
+    "dependentJobs": [
+      "TRIP_FACT",
+      "EMP_FACT"
+    ]
+  },
+  {
+    "reportName": "OverBoarding_Report",
+    "displayName": "OverBoarding report (Only shuttle trips)",
+    "jasperReportName": "OverBoarding_Report",
+    "jasperReportPath": "/reports/MoveinSync_Public/Reports/DRL/OverBoarding_Report",
+    "pathURL": "/jasper-report",
+    "accessToRoles": [
+      "PROJECT_MANAGER",
+      "SITE_ADMIN",
+      "ADMIN",
+      "TRANSPORT_MANAGER",
+      "TRANSPORT_MANAGER_NO_BILLING",
+      "VENDOR_MANAGER",
+      "ROUTE_MANAGER",
+      "OPERATIONS"
+    ],
+    "isEnabled": True,
+    "sendEmail": True,
+    "reportType": "Operations Metrics",
+    "reportParams": {
+      "bunitIdKey": "bunit_id_1",
+      "startDateKey": "startDate",
+      "endDateKey": "endDate",
+      "otherKey": ""
+    },
+    "jasperColumns": [
+      "trip_date",
+      "route_name",
+      "shift",
+      "direction",
+      "trip_id",
+      "signed_in_employees",
+      "actual_cab_capacity",
+      "vendor_id",
+      "actual_cab_registration"
+    ],
+    "reportColumns": [
+      "trip_date",
+      "route_name",
+      "shift",
+      "direction",
+      "trip_id",
+      "signed_in_employees",
+      "actual_cab_capacity",
+      "vendor_id",
+      "actual_cab_registration"
+    ],
+    "reportHeaders": [
+      "Trip Date",
+      "Route Name",
+      "Shift",
+      "Direction",
+      "Trip Id",
+      "Signed in employees",
+      "Actual cab capacity",
+      "Vendor",
+      "Actual Cab Registration"
+    ],
+    "dependentJobs": [
+      "EMP_FACT"
+    ]
+  },
+  {
+    "reportName": "Boarding_Anomaly_report",
+    "displayName": "Boarding Anomaly report (Only shuttle trips)",
+    "jasperReportName": "Boarding_Anomaly_report",
+    "jasperReportPath": "/reports/MoveinSync_Public/Reports/DRL/Boarding_Anomaly_report",
+    "pathURL": "/jasper-report",
+    "accessToRoles": [
+      "PROJECT_MANAGER",
+      "SITE_ADMIN",
+      "ADMIN",
+      "TRANSPORT_MANAGER",
+      "TRANSPORT_MANAGER_NO_BILLING",
+      "VENDOR_MANAGER",
+      "ROUTE_MANAGER",
+      "OPERATIONS"
+    ],
+    "isEnabled": True,
+    "sendEmail": True,
+    "reportType": "Operations Metrics",
+    "reportParams": {
+      "bunitIdKey": "bunit_id_1",
+      "startDateKey": "startDate",
+      "endDateKey": "endDate",
+      "otherKey": ""
+    },
+    "jasperColumns": [
+      "trip_date",
+      "route_name",
+      "shift",
+      "direction",
+      "trip_id",
+      "employee_id",
+      "Planned_Stop_Pickup_Drop_Name",
+      "Planned_Pickup_Geo",
+      "actual_pickup_or_drop_geo",
+      "haversinedistance",
+      "vendor_id",
+      "actual_cab_registration"
+    ],
+    "reportColumns": [
+      "trip_date",
+      "route_name",
+      "shift",
+      "direction",
+      "trip_id",
+      "employee_id",
+      "Planned_Stop_Pickup_Drop_Name",
+      "Planned_Pickup_Geo",
+      "actual_pickup_or_drop_geo",
+      "haversinedistance",
+      "vendor_id",
+      "actual_cab_registration"
+    ],
+    "reportHeaders": [
+      "Trip Date",
+      "Route Name",
+      "Shift",
+      "Direction",
+      "Trip Id",
+      "Employee Id",
+      "Planned Stop Pickup Drop Name",
+      "Planned Pickup Geo",
+      "Actual Pickup Or Drop Geo",
+      "Haversine distance(meters)",
+      "Vendor",
+      "Actual Cab Registration"
+    ],
+    "dependentJobs": [
+      "EMP_FACT"
+    ]
+  },
+  {
+    "reportName": "Shuttle_Stop_Wise_Delay_Report",
+    "displayName": "Shuttle Stop Wise Delay Report",
+    "jasperReportName": "Incentive_Report",
+    "jasperReportPath": "/reports/MoveinSync_Public/Reports/MisMis/All_Employee_NoShow_Trip_Report",
+    "pathURL": "/jasper-report",
+    "accessToRoles": [
+      "PROJECT_MANAGER",
+      "SITE_ADMIN",
+      "ADMIN",
+      "TRANSPORT_MANAGER",
+      "TRANSPORT_MANAGER_NO_BILLING",
+      "VENDOR_MANAGER",
+      "ROUTE_MANAGER",
+      "OPERATIONS"
+    ],
+    "isEnabled": True,
+    "sendEmail": False,
+    "reportType": "Operations Metrics",
+    "reportParams": {
+      "bunitIdKey": "bunit_id_1",
+      "startDateKey": "trip_date_1",
+      "endDateKey": "trip_date_2"
+    },
+    "jasperColumns": [
+      "bunit_id",
+      "trip_id",
+      "trip_direction",
+      "trip_date",
+      "route_name",
+      "stop_name",
+      "planned_stop_reach_time",
+      "actual_stop_reach_time",
+      "vendor_id",
+      "actual_cab_registration"
+    ],
+    "reportColumns": [
+      "bunit_id",
+      "trip_id",
+      "trip_direction",
+      "trip_date",
+      "route_name",
+      "stop_name",
+      "planned_stop_reach_time",
+      "actual_stop_reach_time",
+      "vendor_id",
+      "actual_cab_registration"
+    ],
+    "reportHeaders": [
+      "Bunit ID",
+      "Trip ID",
+      "Trip Direction",
+      "Trip Date",
+      "Route Name",
+      "Stop Name",
+      "Planned Stop Reach Time",
+      "Actual Stop Reach Time",
+      "Vendor",
+      "Actual Cab Registration"
+    ]
+  },
+  {
+    "reportName": "EMPLOYEE_MOBILITY_SIGNIN_SIGNOFF",
+    "displayName": "Employee Orphan Report",
+    "pathURL": "/report",
+    "accessToRoles": [
+      "PROJECT_MANAGER",
+      "SITE_ADMIN",
+      "ADMIN",
+      "TRANSPORT_MANAGER",
+      "TRANSPORT_MANAGER_NO_BILLING",
+      "VENDOR_MANAGER",
+      "ROUTE_MANAGER",
+      "OPERATIONS"
+    ],
+    "isEnabled": True,
+    "sendEmail": True,
+    "reportType": "Operations Metrics",
+    "alertType": "",
+    "reportParams": {
+      "bunitIdKey": "bunit",
+      "startDateKey": "startDate",
+      "endDateKey": "endDate"
+    },
+    "dependentJobs": [
+      "DRIVER_QRCODE_EVENT"
+    ]
+  },
+  {
+    "reportName": "Employee_Tnc_Acceptance_Status_Report",
+    "displayName": "Employee TnC Acceptance On First Login",
+    "pathURL": "/ets-report",
+    "accessToRoles": [
+      "PROJECT_MANAGER",
+      "SITE_ADMIN",
+      "ADMIN",
+      "TRANSPORT_MANAGER",
+      "TRANSPORT_MANAGER_NO_BILLING",
+      "VENDOR_MANAGER",
+      "ROUTE_MANAGER",
+      "OPERATIONS"
+    ],
+    "isEnabled": True,
+    "sendEmail": True,
+    "reportType": "Operations Metrics",
+    "reportParams": {
+      "bunitIdKey": "bunit",
+      "startDateKey": "startDate",
+      "endDateKey": "endDate"
+    }
+  },
+  {
+    "reportName": "Bus_Employee_Statistics_Report",
+    "displayName": "Bus Employee Statistics",
+    "jasperReportName": "Bus_Employee_Statistics_Report",
+    "jasperReportPath": "/reports/MoveinSync_Public/Reports/Reporting_Service/Bus_Employee_Statistics_Report",
+    "pathURL": "/jasper-report",
+    "accessToRoles": [
+      "PROJECT_MANAGER",
+      "SITE_ADMIN",
+      "ADMIN",
+      "TRANSPORT_MANAGER",
+      "TRANSPORT_MANAGER_NO_BILLING",
+      "VENDOR_MANAGER",
+      "ROUTE_MANAGER",
+      "OPERATIONS"
+    ],
+    "isEnabled": True,
+    "sendEmail": True,
+    "reportType": "Operations Metrics",
+    "reportParams": {
+      "bunitIdKey": "bunit_id_1",
+      "startDateKey": "trip_date_1",
+      "endDateKey": "trip_date_2",
+      "otherKey": "",
+      "reportFilters": {
+        "office": "office_1",
+        "vendor": "vendor_id_1",
+        "tripDirection": "tripDirection"
+      }
+    },
+    "jasperColumns": [
+      "trip_date",
+      "bunit_id",
+      "actual travelled count",
+      "scheduled count",
+      "scheduled %",
+      "unscheduled",
+      "unscheduled %",
+      "no_show_count",
+      "no show %"
+    ],
+    "reportColumns": [
+      "trip_date",
+      "bunit_id",
+      "actual travelled count",
+      "scheduled count",
+      "scheduled %",
+      "unscheduled",
+      "unscheduled %",
+      "no_show_count",
+      "no show %"
+    ],
+    "reportHeaders": [
+      "Date",
+      "Bunit Id",
+      "Actual Travelled Count",
+      "Scheduled Count",
+      "Scheduled %",
+      "Unscheduled",
+      "Unscheduled %",
+      "No Show Count",
+      "No Show %"
+    ],
+    "dependentJobs": [
+      "RBD",
+      "TRIP_FACT"
+    ],
+    "detailedReportConfig": {
+      "pathURL": "/jasper-report",
+      "reportName": "Bus_Employee_Statistics_Detailed_Report",
+      "reportType": "Operations Metrics"
+    }
+  },
+  {
+    "reportName": "Bus_Schedule_Employee_Info",
+    "displayName": "Bus Schedule Employee Info",
+    "jasperReportName": "Bus_Schedule_Employee_Info",
+    "jasperReportPath": "/reports/MoveinSync_Public/Reports/dev/Bus_Schedule_Employee_Info",
+    "pathURL": "/jasper-report",
+    "accessToRoles": [
+      "PROJECT_MANAGER",
+      "SITE_ADMIN",
+      "ADMIN",
+      "TRANSPORT_MANAGER",
+      "TRANSPORT_MANAGER_NO_BILLING",
+      "VENDOR_MANAGER",
+      "ROUTE_MANAGER",
+      "OPERATIONS"
+    ],
+    "isEnabled": True,
+    "sendEmail": True,
+    "reportType": "Operations Metrics",
+    "reportParams": {
+      "bunitIdKey": "bunit_id_1",
+      "startDateKey": "trip_date_1",
+      "endDateKey": "trip_date_2",
+      "otherKey": ""
+    },
+    "jasperColumns": [
+      "employee_id",
+      "employee_name",
+      "route_id",
+      "route_name",
+      "shift_time_type",
+      "pickup_time",
+      "drop time",
+      "trip_id",
+      "trip_date"
+    ],
+    "reportColumns": [
+      "employee_id",
+      "employee_name",
+      "route_id",
+      "route_name",
+      "shift_time_type",
+      "pickup_time",
+      "drop time",
+      "trip_id",
+      "trip_date"
+    ],
+    "reportHeaders": [
+      "Employee ID",
+      "Employee Name",
+      "Route ID",
+      "Route Name",
+      "Shift Time",
+      "Pickup Time",
+      "Drop Time",
+      "Trip ID",
+      "Trip Date"
+    ],
+    "dependentJobs": [
+      "TRIP_FACT",
+      "EMP_FACT"
+    ]
+  },
+  {
+    "reportName": "IndemnificationEnforcement",
+    "displayName": "Indemnification Enforcement",
+    "jasperReportName": "IndemnificationEnforcement",
+    "jasperReportPath": "/reports/MoveinSync_Public/Reports/Reporting_Service/IndemnificationEnforcement",
+    "pathURL": "/jasper-report",
+    "accessToRoles": [
+      "PROJECT_MANAGER",
+      "SITE_ADMIN",
+      "ADMIN",
+      "TRANSPORT_MANAGER",
+      "TRANSPORT_MANAGER_NO_BILLING",
+      "VENDOR_MANAGER",
+      "ROUTE_MANAGER"
+    ],
+    "isEnabled": True,
+    "sendEmail": True,
+    "reportType": "Operations Metrics",
+    "reportParams": {
+      "bunitIdKey": "bunit_id_1",
+      "startDateKey": "trip_date_1",
+      "endDateKey": "trip_date_2",
+      "otherKey": ""
+    },
+    "jasperColumns": [
+      "created",
+      "office",
+      "emp_guid",
+      "starttime",
+      "login_recorded",
+      "logout_recorded",
+      "login_status",
+      "logout_status",
+      "logout_cancellation_time",
+      "accepted"
+    ],
+    "reportColumns": [
+      "created",
+      "office",
+      "emp_id",
+      "emp_name",
+      "starttime",
+      "login_recorded",
+      "logout_recorded",
+      "login_status",
+      "logout_status",
+      "logout_cancellation_time",
+      "accepted"
+    ],
+    "reportHeaders": [
+      "Created",
+      "Office",
+      "Employee ID",
+      "Employee Name",
+      "Date",
+      "Login Recorded",
+      "Logout Recorded",
+      "Login Status",
+      "Logout Status",
+      "Logout Cancellation Time",
+      "Accepted"
+    ],
+    "dependentJobs": [
+      ""
+    ]
+  },
+  {
+    "reportName": "Bus_Trips_Summary_Report",
+    "displayName": "Bus Trips",
+    "jasperReportName": "Bus_Trips_Summary_Report",
+    "jasperReportPath": "/reports/MoveinSync_Public/Reports/Reporting_Service/Bus_Trips_Summary_Report",
+    "pathURL": "/jasper-report",
+    "accessToRoles": [
+      "PROJECT_MANAGER",
+      "SITE_ADMIN",
+      "ADMIN",
+      "TRANSPORT_MANAGER",
+      "TRANSPORT_MANAGER_NO_BILLING",
+      "VENDOR_MANAGER",
+      "ROUTE_MANAGER",
+      "OPERATIONS"
+    ],
+    "isEnabled": True,
+    "sendEmail": True,
+    "reportType": "Operations Metrics",
+    "reportParams": {
+      "bunitIdKey": "bunit_id_1",
+      "startDateKey": "trip_date_1",
+      "endDateKey": "trip_date_2",
+      "otherKey": "",
+      "reportFilters": {
+        "office": "office_1",
+        "vendor": "vendor_id_1",
+        "tripDirection": "tripDirection"
+      }
+    },
+    "jasperColumns": [
+      "trip_date",
+      "office",
+      "direction",
+      "shift",
+      "trip_id",
+      "cab_id",
+      "cab_reg",
+      "vendor",
+      "driver_name",
+      "planned employee count",
+      "travelled employee count",
+      "planned start time",
+      "actual start time",
+      "start delay in mins",
+      "planned end time",
+      "actual end time",
+      "end delay in mins",
+      "delay_reason",
+      "trip_state_te"
+    ],
+    "reportColumns": [
+      "trip_date",
+      "office",
+      "direction",
+      "shift",
+      "trip_id",
+      "cab_id",
+      "cab_reg",
+      "vendor",
+      "driver_name",
+      "planned employee count",
+      "travelled employee count",
+      "planned start time",
+      "actual start time",
+      "start delay in mins",
+      "planned end time",
+      "actual end time",
+      "end delay in mins",
+      "delay_reason",
+      "trip_state_te"
+    ],
+    "reportHeaders": [
+      "Date",
+      "Office",
+      "Trip Type",
+      "Shift Time",
+      "Trip Id",
+      "Cab Id",
+      "Cab Registeration",
+      "Vendor",
+      "Driver Name",
+      "Planned Employee Count",
+      "Travelled Employee Count",
+      "Planned Start Time",
+      "Actual Start Time",
+      "Start Delay (mins)",
+      "Planned End Time",
+      "Actual End Time",
+      "End Delay (mins)",
+      "Delay Reason",
+      "Trip Status"
+    ],
+    "dependentJobs": [
+      "RBD",
+      "TRIP_FACT"
+    ],
+    "detailedReportConfig": {
+      "pathURL": "/jasper-report",
+      "reportName": "Bus_Trips_Detailed_report",
+      "reportType": "Operations Metrics"
+    },
+    "extras": {
+      "lnd-India": {
+        "includeRestoreDate": True
+      }
+    }
+  },
+  {
+    "reportName": "No_Show_Policy_Enforcement_Report",
+    "displayName": "No Show Policy Enforcement",
+    "jasperReportName": "No_Show_Policy_Enforcement_Report",
+    "pathURL": "/jasper-report",
+    "jasperReportPath": "/reports/MoveinSync_Public/Reports/Reporting_Service/No_Show_Policy_Enforcement_Report",
+    "accessToRoles": [
+      "PROJECT_MANAGER",
+      "SITE_ADMIN",
+      "ADMIN",
+      "TRANSPORT_MANAGER",
+      "TRANSPORT_MANAGER_NO_BILLING",
+      "VENDOR_MANAGER",
+      "ROUTE_MANAGER"
+    ],
+    "isEnabled": True,
+    "sendEmail": True,
+    "reportType": "Operations Metrics",
+    "jasperColumns": [
+      "business_unit_id",
+      "request_date",
+      "employee_id",
+      "employee_name",
+      "profile_office",
+      "no_show_count_current",
+      "no_show_count_for_warning",
+      "no_show_count_for_action",
+      "action_taken"
+    ],
+    "reportColumns": [
+      "business_unit_id",
+      "request_date",
+      "employee_id",
+      "employee_name",
+      "profile_office",
+      "no_show_count_current",
+      "no_show_count_for_warning",
+      "no_show_count_for_action",
+      "action_taken"
+    ],
+    "reportHeaders": [
+      "Facility",
+      "Date",
+      "Emp Id",
+      "Emp Name",
+      "Office",
+      "No Show Count Current",
+      "No Show Count For Warning Mail",
+      "No Show Count For Action",
+      "Action Taken"
+    ],
+    "reportParams": {
+      "bunitIdKey": "bunit_id_1",
+      "startDateKey": "creation_time_1",
+      "endDateKey": "creation_time_2",
+      "otherKey": ""
+    },
+    "downloadOnly": True,
+    "dependentJobs": [
+      "EMP_FACT",
+      "NO_SHOW_ENF"
+    ]
+  },
+  {
+    "reportName": "Over_Speeding_Report",
+    "displayName": "Over Speeding In Vehicle",
+    "jasperReportName": "Security_Alerts_Detail_Report_Jasper",
+    "pathURL": "/report",
+    "jasperReportPath": "/reports/MoveinSync_Public/Reports/Reporting_Service/Security_Alerts_Detail_Report_Jasper",
+    "accessToRoles": [
+      "PROJECT_MANAGER",
+      "SITE_ADMIN",
+      "ADMIN",
+      "TRANSPORT_MANAGER",
+      "TRANSPORT_MANAGER_NO_BILLING",
+      "VENDOR_MANAGER",
+      "ROUTE_MANAGER",
+      "OPERATIONS"
+    ],
+    "isEnabled": True,
+    "sendEmail": True,
+    "reportType": "Employee Security",
+    "alertType": "OVER_SPEEDING",
+    "redshiftColumns": [
+      "firstcut.alerts.bunit_id",
+      "firstcut.alerts.cab_guid",
+      "firstcut.rbd.trip_office",
+      "firstcut.rbd.vendor",
+      "firstcut.rbd.display_cab_id",
+      "firstcut.rbd.actual_cab_registration",
+      "(CASE WHEN firstcut.rbd.direction = 'LOGIN' THEN 'IN' ELSE 'OUT' END) AS direction",
+      "firstcut.rbd.shift",
+      "firstcut.rbd.trip_id",
+      " (3.6*firstcut.alerts.speed) as speed",
+      "((EXTRACT(EPOCH FROM firstcut.alerts.end_time):: decimal - EXTRACT(EPOCH FROM firstcut.alerts.start_time):: decimal)) AS alert_duration",
+      "firstcut.alerts.start_time",
+      "firstcut.alerts.updated_time",
+      "firstcut.alerts.closed_by",
+      "firstcut.alerts.comments",
+      "firstcut.alerts.landmark",
+      "firstcut.alerts.closedby_bunit",
+      "count(*) over(partition by firstcut.alerts.trip_guid) as count",
+      "firstcut.alerts.severity",
+      "(CASE WHEN firstcut.alerts.state = 1 THEN 'Open' WHEN firstcut.alerts.state = 2 THEN 'Closed' ELSE 'New' END) AS state"
+    ],
+    "jasperColumns": [
+      "bunit_id",
+      "event_id",
+      "event_type",
+      "state_text",
+      "cab_guid",
+      "emp_guid",
+      "trip_guid",
+      "comments",
+      "escalation_level",
+      "source",
+      "landmark",
+      "start_location",
+      "end_location",
+      "actual_signoff_location",
+      "actual_signoff_geocords",
+      "planned_signoff_location",
+      "planned_signoff_geocords",
+      "closed_by",
+      "raised_by",
+      "reason",
+      "external_device_imei",
+      "state",
+      "speed",
+      "distance",
+      "start_time",
+      "end_time",
+      "updated_time",
+      "triggered_time",
+      "trip_start_time",
+      "planned_signoff_time",
+      "visible",
+      "acknowledge_time",
+      "closedby_bunit",
+      "severity",
+      "count",
+      "office",
+      "trip_id",
+      "vendor_id",
+      "actual_vendor_cab_id",
+      "actual_cab_registeration",
+      "mis_driver_id",
+      "direction",
+      "shift",
+      "alert_duration"
+    ],
+    "reportColumns": [
+      "office",
+      "vendor_id",
+      "actual_vendor_cab_id",
+      "actual_cab_registeration",
+      "direction",
+      "shift",
+      "trip_id",
+      "speed",
+      "driver_name",
+      "driver_contact",
+      "start_time",
+      "updated_time",
+      "closed_by",
+      "comments",
+      "landmark",
+      "state_text",
+      "closedby_bunit",
+      "severity",
+      "count",
+      "acknowledge_time"
+    ],
+    "reportHeaders": [
+      "Office",
+      "Cab Vendor",
+      "Cab Id",
+      "Cab Display Id",
+      "Direction",
+      "Shift",
+      "Trip Id",
+      "Speed",
+      "Driver Name",
+      "Driver Cont No",
+      "Start Time",
+      "Updated Time",
+      "Closed By",
+      "Comments",
+      "Start Location",
+      "State",
+      "Closedby Bunit",
+      "Severity",
+      "Count",
+      "Acknowledge Time"
+    ],
+    "reportParams": {
+      "bunitIdKey": "bunit_id_1",
+      "startDateKey": "trip_date_1",
+      "endDateKey": "trip_date_2",
+      "otherKey": "alertType",
+      "reportFilters": {
+        "office": "office_1"
+      }
+    },
+    "dependentJobs": [
+      "ALERT",
+      "TRIP_FACT"
+    ]
+  },
+  {
+    "reportName": "NoShow_Summary_Report",
+    "displayName": "No Show",
+    "jasperReportName": "NoShow_Summary_Report",
+    "pathURL": "/report",
+    "jasperReportPath": "/reports/MoveinSync_Public/Reports/Reporting_Service/NoShow_Summary_Report",
+    "accessToRoles": [
+      "PROJECT_MANAGER",
+      "SITE_ADMIN",
+      "ADMIN",
+      "TRANSPORT_MANAGER",
+      "TRANSPORT_MANAGER_NO_BILLING",
+      "VENDOR_MANAGER",
+      "ROUTE_MANAGER",
+      "OPERATIONS"
+    ],
+    "isEnabled": True,
+    "sendEmail": True,
+    "reportType": "Operations Metrics",
+    "jasperColumns": [
+      "trip_date",
+      "bunit_id",
+      "rostered_employeese",
+      "no_show",
+      "rerostered_cnt",
+      "no_show%",
+      "rerostered%"
+    ],
+    "reportColumns": [
+      "trip_date",
+      "bunit_id",
+      "rostered_employeese",
+      "no_show",
+      "rerostered_cnt",
+      "no_show%",
+      "rerostered%"
+    ],
+    "reportHeaders": [
+      "Date",
+      "Facility",
+      "Rostered Employees",
+      "No Show",
+      "Re Rostered",
+      "No Show (%)",
+      "Re Rostered (%)"
+    ],
+    "reportParams": {
+      "bunitIdKey": "bunit_id_1",
+      "startDateKey": "trip_date_1",
+      "endDateKey": "trip_date_2",
+      "reportFilters": {
+        "office": "office_1",
+        "vendor": "vendor_id_1",
+        "tripDirection": "tripDirection",
+        "shiftType": "shiftType",
+        "shift": "shift"
+      },
+      "otherKey": ""
+    },
+    "dependentJobs": [
+      "TRIP_FACT"
+    ],
+    "detailedReportConfig": {
+      "pathURL": "/report",
+      "reportType": "Operations Metrics",
+      "reportName": "No_Show_Detailed_Report"
+    }
+  },
+  {
+    "reportName": "Escort_Deployment_Report",
+    "displayName": "Escort Deployment",
+    "pathURL": "/report",
+    "accessToRoles": [
+      "PROJECT_MANAGER",
+      "SITE_ADMIN",
+      "ADMIN",
+      "TRANSPORT_MANAGER",
+      "TRANSPORT_MANAGER_NO_BILLING",
+      "VENDOR_MANAGER",
+      "ROUTE_MANAGER",
+      "OPERATIONS"
+    ],
+    "isEnabled": True,
+    "sendEmail": True,
+    "reportType": "Operations Metrics",
+    "alertType": "",
+    "redshiftColumns": [
+      "bunit_id",
+      "shift",
+      "planned_escort",
+      "actual_escort",
+      "trip_id",
+      "trip_date"
+    ],
+    "reportParams": {
+      "bunitIdKey": "bunit",
+      "startDateKey": "startDate",
+      "endDateKey": "endDate",
+      "reportFilters": {
+        "office": "office1",
+        "vendor": "vendor",
+        "tripDirection": "tripDirection",
+        "shiftType": "shiftType",
+        "shift": "shift"
+      }
+    },
+    "dependentJobs": [
+      "EMP_FACT"
+    ],
+    "detailedReportConfig": {
+      "pathURL": "/report",
+      "reportType": "Operations Metrics",
+      "reportName": "Escort_Deployment_Detailed_Report"
+    }
+  },
+  {
+    "reportName": "Seat_Utilization_Report",
+    "displayName": "Seat Utilization",
+    "pathURL": "/report",
+    "accessToRoles": [
+      "PROJECT_MANAGER",
+      "SITE_ADMIN",
+      "ADMIN",
+      "TRANSPORT_MANAGER",
+      "TRANSPORT_MANAGER_NO_BILLING",
+      "VENDOR_MANAGER",
+      "ROUTE_MANAGER"
+    ],
+    "isEnabled": True,
+    "sendEmail": True,
+    "reportType": "Operations Metrics",
+    "alertType": "",
+    "redshiftColumns": [
+      "bunit_id",
+      "shift",
+      "trip_direction",
+      "adhoc",
+      "trip_approved_km",
+      "cab_id",
+      "actual_cab_registration",
+      "cabtype",
+      "actual_cab_capacity",
+      "actualemployee_cnt",
+      "actual_start_time",
+      "actual_end_time",
+      "traveled_km",
+      "trip_id",
+      "trip_date",
+      "plannedemployee_cnt"
+    ],
+    "reportParams": {
+      "bunitIdKey": "bunit",
+      "startDateKey": "startDate",
+      "endDateKey": "endDate",
+      "reportFilters": {
+        "office": "office",
+        "vendor": "vendor",
+        "tripDirection": "tripDirection",
+        "shift": "shift",
+        "shiftType": "shiftType"
+      }
+    },
+    "dependentJobs": [
+      "TRIP_FACT"
+    ],
+    "detailedReportConfig": {
+      "pathURL": "/report",
+      "reportType": "Operations Metrics",
+      "reportName": "Seat_Utilization_Employee_Wise_Report"
+    }
+  },
+  {
+    "reportName": "Planned_Trip_Status_Report",
+    "displayName": "Planned Trip Status",
+    "pathURL": "/report",
+    "accessToRoles": [
+      "PROJECT_MANAGER",
+      "SITE_ADMIN",
+      "ADMIN",
+      "TRANSPORT_MANAGER",
+      "TRANSPORT_MANAGER_NO_BILLING",
+      "VENDOR_MANAGER",
+      "ROUTE_MANAGER"
+    ],
+    "isEnabled": True,
+    "sendEmail": True,
+    "reportType": "Operations Metrics",
+    "reportParams": {
+      "bunitIdKey": "bunit_id_1",
+      "startDateKey": "trip_date_1",
+      "endDateKey": "trip_date_2",
+      "reportFilters": {
+        "office": "office_1",
+        "vendor": "vendor_1",
+        "tripDirection": "tripDirection",
+        "shiftType": "shiftType",
+        "shift": "shift"
+      },
+      "otherKey": ""
+    },
+    "dependentJobs": [
+      "TRIP_FACT"
+    ],
+    "detailedReportConfig": {
+      "pathURL": "/report",
+      "reportType": "Operations Metrics",
+      "reportName": "Planned_Trip_Status_Detailed_Report"
+    }
+  },
+  {
+    "reportName": "Sign_In_Off_Violation_Report",
+    "displayName": "Sign In/Off Violation",
+    "pathURL": "/report",
+    "accessToRoles": [
+      "PROJECT_MANAGER",
+      "SITE_ADMIN",
+      "ADMIN",
+      "TRANSPORT_MANAGER",
+      "TRANSPORT_MANAGER_NO_BILLING",
+      "VENDOR_MANAGER",
+      "ROUTE_MANAGER",
+      "OPERATIONS"
+    ],
+    "isEnabled": True,
+    "sendEmail": True,
+    "reportType": "Operations Metrics",
+    "reportParams": {
+      "bunitIdKey": "bunit_id_1",
+      "startDateKey": "trip_date_1",
+      "endDateKey": "trip_date_2",
+      "reportFilters": {
+        "office": "office_1",
+        "vendor": "vendor_1",
+        "tripDirection": "tripDirection",
+        "shiftType": "shiftType",
+        "shift": "shift"
+      },
+      "otherKey": ""
+    },
+    "dependentJobs": [
+      "EMP_FACT",
+      "TRIP_FACT"
+    ],
+    "detailedReportConfig": {
+      "pathURL": "/report",
+      "reportType": "Operations Metrics",
+      "reportName": "Sign_In_Off_Violation_Signed_In_Report"
+    }
+  },
+  {
+    "reportName": "Click_To_Call_Report",
+    "displayName": "Click To Call",
+    "pathURL": "/report",
+    "jasperReportPath": "/reports/MoveinSync_Public/Reports/Reporting_Service/ClickToCallReport",
+    "accessToRoles": [
+      "PROJECT_MANAGER",
+      "SITE_ADMIN",
+      "ADMIN",
+      "TRANSPORT_MANAGER",
+      "TRANSPORT_MANAGER_NO_BILLING",
+      "VENDOR_MANAGER",
+      "ROUTE_MANAGER"
+    ],
+    "isEnabled": True,
+    "sendEmail": True,
+    "reportType": "Operations Metrics",
+    "alertType": "",
+    "jasperColumns": [
+      "call_id",
+      "trip_id",
+      "call_status",
+      "cab_id",
+      "emp_guid",
+      "time_of_call",
+      "call_billed_units",
+      "driver_call_duration",
+      "employee_call_duration",
+      "call_start_time",
+      "call_end_time",
+      "driver_hang_up_cause",
+      "employee_hang_up_cause",
+      "call_log_url",
+      "call_initiation_location",
+      "office",
+      "actual_cab_registration"
+    ],
+    "reportColumns": [
+      "call_id",
+      "trip_id",
+      "call_status",
+      "actual_cab_registration",
+      "emp_id",
+      "emp_name",
+      "time_of_call",
+      "call_initiation_location",
+      "driver_cont_no",
+      "emp_mobile",
+      "call_billed_units",
+      "call_duration",
+      "employee_call_duration",
+      "call_start_time",
+      "call_end_time",
+      "driver_hang_up_cause",
+      "employee_hang_up_cause",
+      "call_log_url",
+      "office"
+    ],
+    "reportHeaders": [
+      "Call ID",
+      "Trip ID",
+      "Call Status",
+      "Cab ID",
+      "Employee ID",
+      "Employee Name",
+      "Time Of Call",
+      "Call Initiation Location",
+      "Driver Phone Number",
+      "Employee Phone Number",
+      "Call Billed Units",
+      "Driver Call Duration",
+      "Employee Call Duration",
+      "Call Start Time",
+      "Call End Time",
+      "Driver Hang-Up Cause",
+      "Employee Hang-Up Cause",
+      "Call Log Url",
+      "Office"
+    ],
+    "reportParams": {
+      "bunitIdKey": "bunit_id_1",
+      "startDateKey": "startDate",
+      "endDateKey": "endDate",
+      "otherKey": "",
+      "reportFilters": {
+        "office": "office_1"
+      }
+    },
+    "dependentJobs": [
+      "TRIP_FACT",
+      "IVR"
+    ],
+    "downloadOnly": True
+  },
+  {
+    "reportName": "TRIP_FEEDBACK_REPORT",
+    "displayName": "Trip Feedback",
+    "pathURL": "/report",
+    "accessToRoles": [
+      "PROJECT_MANAGER",
+      "SITE_ADMIN",
+      "ADMIN",
+      "TRANSPORT_MANAGER",
+      "TRANSPORT_MANAGER_NO_BILLING",
+      "VENDOR_MANAGER",
+      "ROUTE_MANAGER"
+    ],
+    "isEnabled": True,
+    "sendEmail": True,
+    "reportType": "Operations Metrics",
+    "alertType": "",
+    "reportParams": {
+      "bunitIdKey": "bunit",
+      "startDateKey": "startDate",
+      "endDateKey": "endDate",
+      "reportFilters": {
+        "office": "office"
+      }
+    },
+    "dependentJobs": [
+      "TRIP_FACT",
+      "TRIP_FEEDBACK",
+      "EMP_FACT"
+    ]
+  },
+  {
+    "reportName": "Back_To_Back_Report",
+    "displayName": "Back To Back",
+    "pathURL": "/report",
+    "accessToRoles": [
+      "PROJECT_MANAGER",
+      "SITE_ADMIN",
+      "ADMIN",
+      "TRANSPORT_MANAGER",
+      "TRANSPORT_MANAGER_NO_BILLING",
+      "VENDOR_MANAGER",
+      "ROUTE_MANAGER"
+    ],
+    "isEnabled": True,
+    "sendEmail": True,
+    "reportType": "Operations Metrics",
+    "reportParams": {
+      "bunitIdKey": "bunit_id",
+      "startDateKey": "start_date",
+      "endDateKey": "end_date",
+      "otherKey": ""
+    },
+    "dependentJobs": [
+      "EMP_FACT",
+      "TRIP_FACT"
+    ]
+  },
+  {
+    "reportName": "Back_To_Back_Allocation_Report",
+    "displayName": "Back To Back Allocation",
+    "pathURL": "/report",
+    "accessToRoles": [
+      "PROJECT_MANAGER",
+      "SITE_ADMIN",
+      "ADMIN",
+      "TRANSPORT_MANAGER",
+      "TRANSPORT_MANAGER_NO_BILLING",
+      "VENDOR_MANAGER",
+      "ROUTE_MANAGER"
+    ],
+    "isEnabled": True,
+    "sendEmail": True,
+    "reportType": "Operations Metrics",
+    "alertType": "",
+    "redshiftColumns": [
+      "employee_id",
+      "bunit_id",
+      "actual_vendor_cab_id",
+      "vendor_id",
+      "pickup_geo",
+      "drop_location",
+      "trip_id",
+      "trip_type",
+      "planned_pickup_time",
+      " planned_drop_time",
+      "shift_time",
+      "trip_date"
+    ],
+    "reportParams": {
+      "bunitIdKey": "bunit",
+      "startDateKey": "startDate",
+      "endDateKey": "endDate",
+      "otherKey": ""
+    }
+  },
+  {
+    "reportName": "EmployeeUsageV2Report",
+    "displayName": "Employee Software Usage",
+    "jasperReportName": "EmployeeUsageV2Report",
+    "pathURL": "/jasper-report",
+    "jasperReportPath": "/reports/MoveinSync_Public/Reports/Reporting_Service/EmployeeUsageV2Report",
+    "accessToRoles": [
+      "PROJECT_MANAGER",
+      "SITE_ADMIN",
+      "ADMIN",
+      "TRANSPORT_MANAGER",
+      "TRANSPORT_MANAGER_NO_BILLING",
+      "VENDOR_MANAGER",
+      "ROUTE_MANAGER"
+    ],
+    "isEnabled": True,
+    "sendEmail": True,
+    "reportType": "Operations Metrics",
+    "schedulingDatesAllowed": [
+      3,
+      4,
+      5
+    ],
+    "jasperColumns": [
+      "trip_date",
+      "routed",
+      "adhoc",
+      "unique_users"
+    ],
+    "reportColumns": [
+      "trip_date",
+      "routed",
+      "adhoc",
+      "unique_users"
+    ],
+    "reportHeaders": [
+      "Date",
+      "Routed",
+      "Adhoc",
+      "Number of Unique users"
+    ],
+    "reportParams": {
+      "bunitIdKey": "bunit_id_1",
+      "startDateKey": "trip_date_1",
+      "endDateKey": "trip_date_2",
+      "otherKey": "",
+      "reportFilters": {
+        "office": "profile_office_1"
+      }
+    },
+    "dependentJobs": [
+      "EMP_FACT"
+    ],
+    "detailedReportConfig": {
+      "pathURL": "/jasper-report",
+      "reportType": "Operations Metrics",
+      "reportName": "EmployeeUsageDetailReport"
+    }
+  },
+  {
+    "reportName": "Address_Change_Report",
+    "displayName": "Address Change",
+    "pathURL": "/report",
+    "accessToRoles": [
+      "PROJECT_MANAGER",
+      "SITE_ADMIN",
+      "ADMIN",
+      "TRANSPORT_MANAGER",
+      "TRANSPORT_MANAGER_NO_BILLING",
+      "VENDOR_MANAGER",
+      "ROUTE_MANAGER",
+      "OPERATIONS"
+    ],
+    "isEnabled": True,
+    "sendEmail": True,
+    "reportType": "Operations Metrics",
+    "redshiftColumns": [],
+    "reportParams": {
+      "bunitIdKey": "bunit",
+      "startDateKey": "startDate",
+      "endDateKey": "endDate",
+      "otherKey": ""
+    },
+    "dependentJobs": [
+      "ADDR_CHANGE"
+    ]
+  },
+  {
+    "reportName": "Automation_Status_Report",
+    "displayName": "Automation Status",
+    "pathURL": "/report",
+    "accessToRoles": [
+      "PROJECT_MANAGER",
+      "SITE_ADMIN",
+      "ADMIN",
+      "TRANSPORT_MANAGER",
+      "TRANSPORT_MANAGER_NO_BILLING",
+      "VENDOR_MANAGER",
+      "ROUTE_MANAGER"
+    ],
+    "isEnabled": True,
+    "sendEmail": True,
+    "reportType": "Operations Metrics",
+    "reportParams": {
+      "bunitIdKey": "bunit_id",
+      "startDateKey": "start_date",
+      "endDateKey": "end_date",
+      "reportFilters": {
+        "wisOffice": "wisOffice"
+      },
+      "otherKey": ""
+    },
+    "dependentJobs": [
+      "EMP_FACT",
+      "TRIP_FACT"
+    ]
+  },
+  {
+    "reportName": "BA_Raw_Data_Report",
+    "displayName": "BA Raw Data",
+    "pathURL": "/report",
+    "accessToRoles": [
+      "PROJECT_MANAGER",
+      "SITE_ADMIN",
+      "ADMIN",
+      "TRANSPORT_MANAGER",
+      "TRANSPORT_MANAGER_NO_BILLING",
+      "VENDOR_MANAGER",
+      "ROUTE_MANAGER",
+      "OPERATIONS"
+    ],
+    "isEnabled": True,
+    "sendEmail": False,
+    "reportType": "Operations Metrics",
+    "alertType": "",
+    "reportParams": {
+      "bunitIdKey": "bunit",
+      "startDateKey": "startDate",
+      "endDateKey": "endDate",
+      "reportFilters": {
+        "wisOffice": "wisOffice"
+      }
+    },
+    "dependentJobs": [
+      "EMP_FACT",
+      "TRIP_FACT"
+    ],
+    "downloadOnly": True
+  },
+  {
+    "reportName": "Contact_Transport_Team_Report",
+    "displayName": "Contact Transport Team",
+    "pathURL": "/report",
+    "accessToRoles": [
+      "PROJECT_MANAGER",
+      "SITE_ADMIN",
+      "ADMIN",
+      "TRANSPORT_MANAGER",
+      "TRANSPORT_MANAGER_NO_BILLING",
+      "VENDOR_MANAGER",
+      "ROUTE_MANAGER"
+    ],
+    "isEnabled": True,
+    "sendEmail": True,
+    "reportType": "Operations Metrics",
+    "reportParams": {
+      "bunitIdKey": "bunit_id_1",
+      "startDateKey": "trip_date_1",
+      "endDateKey": "trip_date_2",
+      "reportFilters": {},
+      "otherKey": ""
+    }
+  },
+  {
+    "reportName": "Force_End_Trip_Report",
+    "displayName": "Force End Trip",
+    "pathURL": "/report",
+    "accessToRoles": [
+      "PROJECT_MANAGER",
+      "SITE_ADMIN",
+      "ADMIN",
+      "TRANSPORT_MANAGER",
+      "TRANSPORT_MANAGER_NO_BILLING",
+      "VENDOR_MANAGER",
+      "ROUTE_MANAGER"
+    ],
+    "isEnabled": True,
+    "sendEmail": True,
+    "reportType": "Operations Metrics",
+    "alertType": "",
+    "reportParams": {
+      "bunitIdKey": "bunit",
+      "startDateKey": "startDate",
+      "endDateKey": "end_date",
+      "otherKey": ""
+    }
+  },
+  {
+    "reportName": "Adhoc_Request_Report",
+    "displayName": "Adhoc Request",
+    "pathURL": "/report",
+    "accessToRoles": [
+      "PROJECT_MANAGER",
+      "SITE_ADMIN",
+      "ADMIN",
+      "TRANSPORT_MANAGER",
+      "TRANSPORT_MANAGER_NO_BILLING",
+      "VENDOR_MANAGER",
+      "ROUTE_MANAGER"
+    ],
+    "isEnabled": True,
+    "sendEmail": True,
+    "reportType": "Operations Metrics",
+    "redshiftColumns": [
+      "sd.employee_id",
+      "sd.bunit_id",
+      "sd.event_time",
+      "sd.prev_event_time",
+      "sd.state",
+      "sd.request_type",
+      "sd.request_time",
+      "sd.event_name",
+      "sd.channel"
+    ],
+    "reportParams": {
+      "bunitIdKey": "bunit_id",
+      "startDateKey": "start_date",
+      "endDateKey": "end_date",
+      "otherKey": ""
+    },
+    "dependentJobs": [
+      "EMP_SCHEDULE"
+    ]
+  },
+  {
+    "reportName": "IndemnificationSummaryReport",
+    "displayName": "Indemnification Summary",
+    "jasperReportName": "IndemnificationSummaryReport",
+    "pathURL": "/jasper-report",
+    "jasperReportPath": "/reports/MoveinSync_Public/Reports/Reporting_Service/IndemnificationSummaryReport",
+    "accessToRoles": [
+      "PROJECT_MANAGER",
+      "SITE_ADMIN",
+      "ADMIN",
+      "TRANSPORT_MANAGER",
+      "TRANSPORT_MANAGER_NO_BILLING",
+      "VENDOR_MANAGER",
+      "ROUTE_MANAGER"
+    ],
+    "isEnabled": True,
+    "sendEmail": True,
+    "reportType": "Operations Metrics",
+    "jasperColumns": [
+      "created",
+      "office",
+      "emp_guid",
+      "starttime",
+      "login",
+      "logout",
+      "travelmode"
+    ],
+    "reportColumns": [
+      "created",
+      "office",
+      "emp_id",
+      "emp_name",
+      "starttime",
+      "login",
+      "logout",
+      "travelmode"
+    ],
+    "reportHeaders": [
+      "Created",
+      "Office",
+      "Employee ID",
+      "Employee Name",
+      "Date",
+      "Login",
+      "Logout",
+      "Travel Mode"
+    ],
+    "reportParams": {
+      "bunitIdKey": "bunit_id_1",
+      "startDateKey": "trip_date_1",
+      "endDateKey": "trip_date_2",
+      "otherKey": ""
+    },
+    "dependentJobs": [
+      ""
+    ]
+  },
+  {
+    "reportName": "IVR_Usage_Report",
+    "displayName": "IVR Usage",
+    "jasperReportName": "IVR_Usage_Report",
+    "pathURL": "/report",
+    "jasperReportPath": "/reports/MoveinSync_Public/Reports/Reporting_Service/IVR_Usage_Report",
+    "accessToRoles": [
+      "PROJECT_MANAGER",
+      "SITE_ADMIN",
+      "ADMIN",
+      "TRANSPORT_MANAGER",
+      "TRANSPORT_MANAGER_NO_BILLING",
+      "VENDOR_MANAGER",
+      "ROUTE_MANAGER"
+    ],
+    "isEnabled": True,
+    "sendEmail": True,
+    "reportType": "Operations Metrics",
+    "jasperColumns": [
+      "trigger_time",
+      "call_id",
+      "feature_name",
+      "call_status",
+      "trip_id",
+      "emp_mobile",
+      "driver_contact",
+      "billed_units",
+      "second_caller_duration",
+      "recording_url",
+      "office",
+      "emp_id",
+      "planned_start_time",
+      "cab_id",
+      "call_duration"
+    ],
+    "reportColumns": [
+      "call_id",
+      "emp_id",
+      "emp_name",
+      "emp_mobile",
+      "driver_contact",
+      "trip_id",
+      "cab_id",
+      "trigger_time",
+      "planned_start_time",
+      "call_status",
+      "billed_units",
+      "call_duration",
+      "feature_name",
+      "recording_url"
+    ],
+    "reportHeaders": [
+      "Call Id",
+      "Emp Id",
+      "Emp Name",
+      "Emp Mobile",
+      "Driver Contact",
+      "Trip Id",
+      "Cab Id",
+      "Trigger Time",
+      "Planned Pickup Time",
+      "Call Status",
+      "Billed Units",
+      "Call Duration",
+      "Feature Name",
+      "Recording Url"
+    ],
+    "reportParams": {
+      "bunitIdKey": "bunitId",
+      "startDateKey": "startDate",
+      "endDateKey": "endDate",
+      "otherKey": "",
+      "reportFilters": {
+        "office": "office_1"
+      }
+    },
+    "dependentJobs": [
+      "EMP_FACT",
+      "IVR"
+    ],
+    "downloadOnly": True
+  },
+  {
+    "reportName": "Schedule_Change_Report",
+    "displayName": "Schedule Change",
+    "pathURL": "/report",
+    "accessToRoles": [
+      "PROJECT_MANAGER",
+      "SITE_ADMIN",
+      "ADMIN",
+      "TRANSPORT_MANAGER",
+      "TRANSPORT_MANAGER_NO_BILLING",
+      "VENDOR_MANAGER",
+      "ROUTE_MANAGER"
+    ],
+    "isEnabled": True,
+    "sendEmail": True,
+    "reportType": "Operations Metrics",
+    "alertType": "",
+    "reportParams": {
+      "bunitIdKey": "bunit",
+      "startDateKey": "startDate",
+      "endDateKey": "endDate",
+      "reportFilters": {
+        "office": "office",
+        "vendor": "vendor",
+        "tripDirection": "trip_direction",
+        "shift": "shift",
+        "shiftType": "shiftType"
+      }
+    },
+    "dependentJobs": [
+      "EMP_FACT",
+      "EMP_SCHEDULE"
+    ],
+    "downloadOnly": True
+  },
+  {
+    "reportName": "Communication_Report",
+    "displayName": "Employee Communication",
+    "pathURL": "/report",
+    "accessToRoles": [
+      "PROJECT_MANAGER",
+      "SITE_ADMIN",
+      "ADMIN",
+      "TRANSPORT_MANAGER",
+      "TRANSPORT_MANAGER_NO_BILLING",
+      "VENDOR_MANAGER",
+      "ROUTE_MANAGER"
+    ],
+    "isEnabled": True,
+    "sendEmail": True,
+    "reportType": "Operations Metrics",
+    "redshiftColumns": [
+      "communication_request_time",
+      "recipient_uuid",
+      "business_context",
+      "communication_status",
+      "communication_channel_status_update_time",
+      "communication_channel",
+      "shift_type",
+      "shift_time",
+      "trip_id",
+      "communication_uuid",
+      "communication_channel_request_time",
+      "office",
+      "message_text"
+    ],
+    "reportParams": {
+      "bunitIdKey": "bunit_id",
+      "startDateKey": "start_date",
+      "endDateKey": "end_date",
+      "otherKey": "",
+      "reportFilters": {
+        "office": "office_1"
+      }
+    },
+    "dependentJobs": [
+      "COMMUNICATION",
+      "TRIP_FACT"
+    ]
+  },
+  {
+    "reportName": "Special_Need_Report",
+    "displayName": "Special Need Employee",
+    "jasperReportName": "Special_Need_Report",
+    "pathURL": "/report",
+    "jasperReportPath": "/reports/MoveinSync_Public/Reports/ETS_Reports/Special_Need_Report",
+    "accessToRoles": [
+      "PROJECT_MANAGER",
+      "SITE_ADMIN",
+      "ADMIN",
+      "TRANSPORT_MANAGER",
+      "TRANSPORT_MANAGER_NO_BILLING",
+      "VENDOR_MANAGER",
+      "ROUTE_MANAGER"
+    ],
+    "isEnabled": True,
+    "sendEmail": True,
+    "reportType": "Operations Metrics",
+    "jasperColumns": [
+      "business_unit",
+      "employee_id",
+      "emp_name",
+      "gender",
+      "office_name",
+      "specialneed_name",
+      "specialneed_starttime",
+      "expectedendtime",
+      "actualendtime"
+    ],
+    "reportColumns": [
+      "business_unit",
+      "employee_id",
+      "emp_name",
+      "gender",
+      "office_name",
+      "specialneed_name",
+      "specialneed_starttime",
+      "expectedendtime",
+      "actualendtime"
+    ],
+    "reportHeaders": [
+      "Facility",
+      "Employee ID",
+      "Employee Name",
+      "Gender",
+      "Office",
+      "Special Need Name",
+      "Start Time",
+      "Expected End Time",
+      "Actual End Time"
+    ],
+    "reportParams": {
+      "bunitIdKey": "bunit_id_1",
+      "startDateKey": "trip_date_1",
+      "endDateKey": "trip_date_2",
+      "otherKey": "",
+      "reportFilters": {
+        "office": "office_1"
+      }
+    },
+    "dependentJobs": [
+      "EMP_FACT"
+    ]
+  },
+  {
+    "reportName": "Cab_Allocation_Detailed_Report",
+    "displayName": "Vehicle Allocation",
+    "jasperReportName": "Cab_Allocation_Detailed",
+    "pathURL": "/jasper-report",
+    "jasperReportPath": "/reports/MoveinSync_Public/Reports/Vendor_Experience/Cab_Allocation_Detailed",
+    "accessToRoles": [
+      "PROJECT_MANAGER",
+      "SITE_ADMIN",
+      "ADMIN",
+      "TRANSPORT_MANAGER",
+      "TRANSPORT_MANAGER_NO_BILLING",
+      "VENDOR_MANAGER",
+      "ROUTE_MANAGER"
+    ],
+    "isEnabled": True,
+    "sendEmail": True,
+    "reportType": "Operations Metrics",
+    "alertType": "",
+    "jasperColumns": [
+      "bunit_id",
+      "vendor_id",
+      "trip_id",
+      "trip_direction",
+      "shift",
+      "cab_allocation_time",
+      "timedifference"
+    ],
+    "reportColumns": [
+      "bunit_id",
+      "vendor_id",
+      "trip_id",
+      "trip_direction",
+      "shift",
+      "cab_allocation_time",
+      "timedifference"
+    ],
+    "reportHeaders": [
+      "Bunit Id",
+      "Vendor Id",
+      "Trip Id",
+      "Trip Direction",
+      "Shift",
+      "Cab Allocation Time",
+      "Time Difference"
+    ],
+    "reportParams": {
+      "bunitIdKey": "bunit_id_1",
+      "startDateKey": "trip_date_1",
+      "endDateKey": "trip_date_2"
+    },
+    "reportFilters": {
+      "office": "office_1"
+    },
+    "vendorRole": True,
+    "dependentJobs": [
+      "TRIP_FACT"
+    ]
+  },
+  {
+    "reportName": "Trip_Completion_Report_VendorWise",
+    "displayName": "Trip Completion",
+    "jasperReportName": "Trip_Completion_Report_VendorWise",
+    "pathURL": "/jasper-report",
+    "jasperReportPath": "/reports/MoveinSync_Public/Reports/Vendor_Experience/Trip_Completion_Report_VendorWise",
+    "accessToRoles": [
+      "PROJECT_MANAGER",
+      "SITE_ADMIN",
+      "ADMIN",
+      "TRANSPORT_MANAGER",
+      "TRANSPORT_MANAGER_NO_BILLING",
+      "VENDOR_MANAGER",
+      "ROUTE_MANAGER",
+      "OPERATIONS"
+    ],
+    "isEnabled": True,
+    "sendEmail": True,
+    "reportType": "Operations Metrics",
+    "alertType": "",
+    "jasperColumns": [
+      "bunit_id",
+      "vendor_id",
+      "trip_date",
+      "trip_id",
+      "office",
+      "trip_direction",
+      "shift",
+      "source",
+      "trip_status",
+      "delay_reason",
+      "cabtype",
+      "actual_vendor_cab_id",
+      "actual_cab_registration",
+      "traveled_km",
+      "trip_state_text",
+      "billing_zone",
+      "landmark",
+      "planned_cab_registration",
+      "planned_km"
+    ],
+    "reportColumns": [
+      "bunit_id",
+      "vendor_id",
+      "trip_date",
+      "trip_id",
+      "office",
+      "trip_direction",
+      "shift",
+      "source",
+      "trip_status",
+      "delay_reason",
+      "cabtype",
+      "actual_vendor_cab_id",
+      "actual_cab_registration",
+      "traveled_km",
+      "trip_state_text",
+      "billing_zone",
+      "landmark",
+      "planned_cab_registration",
+      "planned_km"
+    ],
+    "reportHeaders": [
+      "Bunit Id",
+      "Vendor Id",
+      "Trip Date",
+      "Trip Id",
+      "Office",
+      "Trip Direction",
+      "Shift",
+      "Source",
+      "Trip Status",
+      "Delay Reason",
+      "Cab Type",
+      "Actual Vendor Cab Id",
+      "Actual Cab Registration",
+      "Traveled Km",
+      "Trip Status Reason",
+      "Billing Zone",
+      "Landmark",
+      "Planned cab registration",
+      "Planned km"
+    ],
+    "reportParams": {
+      "bunitIdKey": "bunit_id_1",
+      "startDateKey": "trip_date_1",
+      "endDateKey": "trip_date_2"
+    },
+    "reportFilters": {
+      "office": "office_1"
+    },
+    "vendorRole": True,
+    "dependentJobs": [
+      "TRIP_FACT"
+    ],
+    "downloadOnly": True
+  },
+  {
+    "reportName": "Planned_Vs_Actual_Vendor_Cab_Report",
+    "displayName": "Planned Vs Actual Vendor Vehicle",
+    "jasperReportName": "Planned_Vs_Actual_Vendor_Cab_Report",
+    "pathURL": "/report",
+    "jasperReportPath": "/reports/MoveinSync_Public/Reports/ETS_Reports/Planned_Vs_Actual_Vendor_Cab_Report",
+    "accessToRoles": [
+      "PROJECT_MANAGER",
+      "SITE_ADMIN",
+      "ADMIN",
+      "TRANSPORT_MANAGER",
+      "TRANSPORT_MANAGER_NO_BILLING",
+      "VENDOR_MANAGER",
+      "ROUTE_MANAGER"
+    ],
+    "isEnabled": True,
+    "sendEmail": True,
+    "reportType": "Operations Metrics",
+    "alertType": "",
+    "jasperColumns": [
+      "duty_date",
+      "trip_office",
+      "trip_id",
+      "planned_vendor",
+      "vendor",
+      "planned_cab_registration",
+      "cab_reg",
+      "planned_emp_cnt",
+      "travelled_emp_cnt",
+      "direction",
+      "shift"
+    ],
+    "reportColumns": [
+      "duty_date",
+      "trip_office",
+      "trip_id",
+      "planned_vendor",
+      "vendor",
+      "planned_cab_registration",
+      "cab_reg",
+      "planned_emp_cnt",
+      "travelled_emp_cnt",
+      "direction",
+      "shift"
+    ],
+    "reportHeaders": [
+      "Duty Date",
+      "Trip Office",
+      "Trip Id",
+      "Planned Vendor",
+      "Vendor",
+      "Planned Cab Registration",
+      "Cab Registration",
+      "Planned Emp Count",
+      "Travelled Emp Count",
+      "Direction",
+      "Shift"
+    ],
+    "reportParams": {
+      "bunitIdKey": "bunit_id_1",
+      "startDateKey": "cycle_start_1",
+      "endDateKey": "cycle_start_2",
+      "reportFilters": {
+        "office": "office_1"
+      }
+    },
+    "dependentJobs": [
+      "RBD_FACT"
+    ]
+  },
+  {
+    "reportName": "Auto_Vendor_Allocation_Report",
+    "displayName": "Auto Vendor Allocation",
+    "pathURL": "/report",
+    "accessToRoles": [
+      "PROJECT_MANAGER",
+      "SITE_ADMIN",
+      "ADMIN",
+      "TRANSPORT_MANAGER",
+      "TRANSPORT_MANAGER_NO_BILLING",
+      "VENDOR_MANAGER",
+      "ROUTE_MANAGER"
+    ],
+    "isEnabled": True,
+    "sendEmail": True,
+    "reportType": "Operations Metrics",
+    "reportParams": {
+      "bunitIdKey": "bunit_id",
+      "startDateKey": "start_date",
+      "endDateKey": "end_date",
+      "otherKey": ""
+    }
+  },
+  {
+    "reportName": "Vehicle_Utilisation",
+    "displayName": "Vehicle Capacity Non-Utilization",
+    "pathURL": "/report",
+    "accessToRoles": [
+      "PROJECT_MANAGER",
+      "SITE_ADMIN",
+      "ADMIN",
+      "TRANSPORT_MANAGER",
+      "TRANSPORT_MANAGER_NO_BILLING",
+      "VENDOR_MANAGER",
+      "ROUTE_MANAGER"
+    ],
+    "isEnabled": True,
+    "sendEmail": True,
+    "reportType": "Operations Metrics",
+    "reportParams": {
+      "bunitIdKey": "bunit_id",
+      "startDateKey": "start_date",
+      "endDateKey": "end_date",
+      "otherKey": "",
+      "reportFilters": {
+        "office": "office_1"
+      }
+    },
+    "dependentJobs": [
+      "EMP_FACT"
+    ]
+  },
+  {
+    "reportName": "First_Pickup_Driver_Delay_Cabs_Report",
+    "displayName": "First Pickup Delay",
+    "jasperReportName": "First_Pickup_Driver_Delay_Cabs_Report",
+    "pathURL": "/jasper-report",
+    "jasperReportPath": "/reports/MoveinSync_Public/Reports/Reporting_Service/First_Pickup_Driver_Delay_Cabs_Report",
+    "accessToRoles": [
+      "PROJECT_MANAGER",
+      "SITE_ADMIN",
+      "ADMIN",
+      "TRANSPORT_MANAGER",
+      "TRANSPORT_MANAGER_NO_BILLING",
+      "VENDOR_MANAGER",
+      "ROUTE_MANAGER",
+      "OPERATIONS"
+    ],
+    "isEnabled": True,
+    "sendEmail": True,
+    "reportType": "Operations Metrics",
+    "jasperColumns": [
+      "bunit_id",
+      "trip_id",
+      "travel_office",
+      "employee_id",
+      "actual_cab_registration",
+      "actual_vendor_cab_id",
+      "shift_time_type",
+      "planned_pickup_time",
+      "driver_reporting_time",
+      "delay",
+      "ota_status"
+    ],
+    "reportColumns": [
+      "bunit_id",
+      "trip_id",
+      "travel_office",
+      "employee_id",
+      "actual_cab_registration",
+      "actual_vendor_cab_id",
+      "shift_time_type",
+      "planned_pickup_time",
+      "driver_reporting_time",
+      "delay",
+      "ota_status"
+    ],
+    "reportHeaders": [
+      "Facility",
+      "Trip Id",
+      "Location",
+      "Employee Id",
+      "Actual Cab Registration",
+      "Actual Vendor Cab Id",
+      "Shift Time",
+      "Planned Pickup Time",
+      "Driver Reporting Time",
+      "Delay(mins)",
+      "OTA Status"
+    ],
+    "reportParams": {
+      "bunitIdKey": "bunit_id_1",
+      "startDateKey": "trip_date_1",
+      "endDateKey": "trip_date_2",
+      "otherKey": "",
+      "reportFilters": {
+        "office": "office_1"
+      }
+    },
+    "dependentJobs": [
+      "EMP_FACT"
+    ]
+  },
+  {
+    "reportName": "Opt_In_Opt_Out_Report",
+    "displayName": "Opt-In Opt-Out",
+    "jasperReportName": "Opt_In_Opt_Out_Report",
+    "pathURL": "/jasper-report",
+    "jasperReportPath": "/reports/MoveinSync_Public/Reports/ETS_Reports/Optin_Optout_Report",
+    "accessToRoles": [
+      "PROJECT_MANAGER",
+      "SITE_ADMIN",
+      "ADMIN",
+      "TRANSPORT_MANAGER",
+      "TRANSPORT_MANAGER_NO_BILLING",
+      "VENDOR_MANAGER",
+      "ROUTE_MANAGER"
+    ],
+    "isEnabled": True,
+    "sendEmail": True,
+    "reportType": "Operations Metrics",
+    "jasperColumns": [
+      "emp_guid",
+      "bunit_id",
+      "startdate",
+      "enddate",
+      "emp_guid",
+      "logoutstate",
+      "nightlogin",
+      "shiftpairs",
+      "lastupdated"
+    ],
+    "reportColumns": [
+      "emp_id",
+      "emp_name",
+      "emp_gender",
+      "bunit_id",
+      "team",
+      "address",
+      "locality",
+      "startdate",
+      "enddate",
+      "optin_status",
+      "nightlogin",
+      "nightlogin",
+      "lastupdated",
+      "emp_id",
+      "shift_pair"
+    ],
+    "reportHeaders": [
+      "Emp Id",
+      "Emp Name",
+      "Emp Gender",
+      "Bunit Id",
+      "Team",
+      "Address",
+      "Locality",
+      "Startdate",
+      "Enddate",
+      "Optin Status",
+      "Nightlogin",
+      "Nightlogin",
+      "Lastupdated",
+      "Emp Id",
+      "Shift Pair"
+    ],
+    "reportParams": {
+      "bunitIdKey": "bunit_id_1",
+      "startDateKey": "creation_time_1",
+      "endDateKey": "creation_time_2",
+      "otherKey": ""
+    },
+    "dependentJobs": [
+      "OPTIN"
+    ]
+  },
+  {
+    "reportName": "NoShow_Approval_Report",
+    "displayName": "NoShow Approval",
+    "jasperReportName": "NoShow_Approval_Report",
+    "pathURL": "/jasper-report",
+    "jasperReportPath": "/reports/MoveinSync_Public/Reports/Reporting_Service/NoShow_Approval_Report",
+    "accessToRoles": [
+      "PROJECT_MANAGER",
+      "SITE_ADMIN",
+      "ADMIN",
+      "TRANSPORT_MANAGER",
+      "TRANSPORT_MANAGER_NO_BILLING",
+      "VENDOR_MANAGER",
+      "ROUTE_MANAGER",
+      "OPERATIONS"
+    ],
+    "isEnabled": True,
+    "sendEmail": True,
+    "reportType": "Operations Metrics",
+    "jasperColumns": [
+      "date",
+      "trip_id",
+      "employee_id",
+      "employee_name",
+      "gender",
+      "team",
+      "team_manager_id",
+      "office",
+      "shift",
+      "no_show_reason",
+      "pickup_time",
+      "team_manager_action",
+      "team_manager_comment",
+      "transport_manager_action",
+      "transport_manager_comment"
+    ],
+    "reportColumns": [
+      "date",
+      "trip_id",
+      "employee_id",
+      "employee_name",
+      "emp_mobile",
+      "gender",
+      "team",
+      "emp_id",
+      "office",
+      "shift",
+      "no_show_reason",
+      "pickup_time",
+      "team_manager_action",
+      "team_manager_comment",
+      "transport_manager_action",
+      "transport_manager_comment"
+    ],
+    "reportHeaders": [
+      "Date",
+      "Trip ID",
+      "Employee ID",
+      "Employee Name",
+      "Phone No.",
+      "Gender",
+      "Team",
+      "Team Manager",
+      "Office",
+      "Shift",
+      "NoShow Reason",
+      "Pickup Time",
+      "Team Manager Action",
+      "Team Manager Comment",
+      "Transport Manager Action",
+      "Transport Manager Comment"
+    ],
+    "reportParams": {
+      "bunitIdKey": "bunit_id_1",
+      "startDateKey": "trip_date_1",
+      "endDateKey": "trip_date_2",
+      "otherKey": ""
+    },
+    "dependentJobs": [
+      "EMP_FACT",
+      "TMS_NO_SHOW_APPROVAL"
+    ]
+  },
+  {
+    "reportName": "Cab_Deployment_Report",
+    "displayName": "Vehicle Deployment",
+    "pathURL": "/report",
+    "accessToRoles": [
+      "PROJECT_MANAGER",
+      "SITE_ADMIN",
+      "ADMIN",
+      "TRANSPORT_MANAGER",
+      "TRANSPORT_MANAGER_NO_BILLING",
+      "VENDOR_MANAGER",
+      "ROUTE_MANAGER",
+      "OPERATIONS"
+    ],
+    "isEnabled": True,
+    "sendEmail": True,
+    "reportType": "Operations Metrics",
+    "reportParams": {
+      "bunitIdKey": "bunit_id",
+      "startDateKey": "start_date",
+      "endDateKey": "end_date",
+      "otherKey": ""
+    },
+    "dependentJobs": [
+      "EMP_FACT",
+      "TRIP_FACT"
+    ]
+  },
+  {
+    "reportName": "Vendor_Tracksheet_Report",
+    "displayName": "Vendor Tracksheet",
+    "pathURL": "/report",
+    "accessToRoles": [
+      "PROJECT_MANAGER",
+      "SITE_ADMIN",
+      "ADMIN",
+      "TRANSPORT_MANAGER",
+      "TRANSPORT_MANAGER_NO_BILLING",
+      "VENDOR_MANAGER",
+      "ROUTE_MANAGER",
+      "OPERATIONS"
+    ],
+    "isEnabled": True,
+    "sendEmail": True,
+    "reportType": "Operations Metrics",
+    "reportParams": {
+      "bunitIdKey": "bunit_id",
+      "startDateKey": "start_date",
+      "endDateKey": "end_date",
+      "otherKey": ""
+    },
+    "dependentJobs": [
+      "EMP_FACT",
+      "TRIP_FACT"
+    ]
+  },
+  {
+    "reportName": "Employee_History_Report",
+    "displayName": "Employee History",
+    "pathURL": "/report",
+    "accessToRoles": [
+      "PROJECT_MANAGER",
+      "SITE_ADMIN",
+      "ADMIN",
+      "TRANSPORT_MANAGER",
+      "TRANSPORT_MANAGER_NO_BILLING",
+      "VENDOR_MANAGER",
+      "ROUTE_MANAGER"
+    ],
+    "isEnabled": True,
+    "sendEmail": True,
+    "maxRange": 365,
+    "reportType": "Operations Metrics",
+    "isEmployeeHistoryEnable": True,
+    "reportParams": {
+      "bunitIdKey": "bunit_id",
+      "startDateKey": "start_date",
+      "endDateKey": "end_date",
+      "otherKey": ""
+    },
+    "dependentJobs": [
+      "EMP_FACT"
+    ]
+  },
+  {
+    "reportName": "Communication_Portal_Responses",
+    "displayName": "Communication Portal Responses",
+    "pathURL": "/report",
+    "accessToRoles": [
+      "PROJECT_MANAGER",
+      "SITE_ADMIN",
+      "ADMIN",
+      "TRANSPORT_MANAGER",
+      "TRANSPORT_MANAGER_NO_BILLING",
+      "VENDOR_MANAGER",
+      "ROUTE_MANAGER"
+    ],
+    "isEnabled": True,
+    "sendEmail": True,
+    "reportType": "Operations Metrics",
+    "alertType": "",
+    "redshiftColumns": [
+      "number",
+      "employeeId",
+      "employeeName",
+      "title",
+      "body",
+      "date",
+      "response",
+      "type"
+    ],
+    "reportParams": {
+      "bunitIdKey": "bunit",
+      "startDateKey": "startDate",
+      "endDateKey": "endDate"
+    }
+  },
+  {
+    "reportName": "Employee_Consent_Report",
+    "displayName": "Employee Consent",
+    "pathURL": "/report",
+    "accessToRoles": [
+      "PROJECT_MANAGER",
+      "SITE_ADMIN",
+      "ADMIN",
+      "TRANSPORT_MANAGER",
+      "TRANSPORT_MANAGER_NO_BILLING",
+      "VENDOR_MANAGER",
+      "ROUTE_MANAGER"
+    ],
+    "isEnabled": True,
+    "sendEmail": False,
+    "reportType": "Operations Metrics",
+    "alertType": "",
+    "redshiftColumns": [
+      "employeeId",
+      "employeeName",
+      "date",
+      "time",
+      "response"
+    ],
+    "reportParams": {
+      "bunitIdKey": "bunit",
+      "startDateKey": "startDate",
+      "endDateKey": "end_date",
+      "reportFilters": {
+        "office": "office_1"
+      }
+    },
+    "dependentJobs": [
+      "EMPLOYEE_DECLARATION"
+    ]
+  },
+  {
+    "reportName": "Covid_Group_and_Zone_Report",
+    "displayName": "Covid Group/Zone",
+    "jasperReportName": "Covid_Group_and_Zone_Report",
+    "pathURL": "/jasper-report",
+    "jasperReportPath": "/reports/MoveinSync_Public/Reports/Reporting_Service/Covid_Group_and_Zone_Report",
+    "accessToRoles": [
+      "PROJECT_MANAGER",
+      "SITE_ADMIN",
+      "ADMIN",
+      "TRANSPORT_MANAGER",
+      "TRANSPORT_MANAGER_NO_BILLING",
+      "VENDOR_MANAGER",
+      "ROUTE_MANAGER",
+      "OPERATIONS"
+    ],
+    "isEnabled": True,
+    "sendEmail": True,
+    "reportType": "Operations Metrics",
+    "jasperColumns": [
+      "bunit_id",
+      "emp_guid",
+      "emp_name",
+      "project",
+      "tags",
+      "created",
+      "updated"
+    ],
+    "reportColumns": [
+      "bunit_id",
+      "emp_id",
+      "emp_name",
+      "project",
+      "tags",
+      "created",
+      "updated"
+    ],
+    "reportHeaders": [
+      "Facility",
+      "Employee Id",
+      "Employee Name",
+      "Team/Project",
+      "Covid Zone",
+      "Created Time",
+      "Updated Time"
+    ],
+    "reportParams": {
+      "bunitIdKey": "bunit_id_1",
+      "startDateKey": "trip_date_1",
+      "endDateKey": "trip_date_2",
+      "otherKey": ""
+    },
+    "dependentJobs": [
+      "EMP_TAGS"
+    ]
+  },
+  {
+    "reportName": "Vehicle_Utilisation",
+    "displayName": "Vehicle Utilisation",
+    "pathURL": "/report",
+    "accessToRoles": [
+      "PROJECT_MANAGER",
+      "SITE_ADMIN",
+      "ADMIN",
+      "TRANSPORT_MANAGER",
+      "TRANSPORT_MANAGER_NO_BILLING",
+      "VENDOR_MANAGER",
+      "ROUTE_MANAGER"
+    ],
+    "isEnabled": True,
+    "sendEmail": True,
+    "reportType": "Operations Metrics",
+    "reportParams": {
+      "bunitIdKey": "bunit_id",
+      "startDateKey": "start_date",
+      "endDateKey": "end_date",
+      "otherKey": "",
+      "reportFilters": {
+        "office": "office_1"
+      }
+    }
+  },
+  {
+    "reportName": "Adjustment_Report",
+    "displayName": "Adjustment Data",
+    "jasperReportName": "Adjustment_Report",
+    "pathURL": "/jasper-report",
+    "jasperReportPath": "/reports/MoveinSync_Public/Reports/Reporting_Service/Adjustment_Report",
+    "accessToRoles": [
+      "PROJECT_MANAGER",
+      "SITE_ADMIN",
+      "ADMIN",
+      "TRANSPORT_MANAGER",
+      "TRANSPORT_MANAGER_NO_BILLING",
+      "VENDOR_MANAGER",
+      "ROUTE_MANAGER",
+      "OPERATIONS"
+    ],
+    "isEnabled": True,
+    "sendEmail": True,
+    "reportType": "Billing",
+    "jasperColumns": [
+      "date",
+      "cab_vendor",
+      "name",
+      "amount"
+    ],
+    "reportColumns": [
+      "date",
+      "cab_vendor",
+      "name",
+      "amount"
+    ],
+    "reportHeaders": [
+      "Date",
+      "Entity",
+      "Penalty Type",
+      "Amount"
+    ],
+    "reportParams": {
+      "bunitIdKey": "bunit_id_1",
+      "startDateKey": "start_date_1",
+      "endDateKey": "start_date_2",
+      "otherKey": ""
+    },
+    "dependentJobs": [
+      "ADJUSTMENT",
+      "ADJUSTMENT_TYPE"
+    ]
+  },
+  {
+    "reportName": "Driver_Absent_Report",
+    "displayName": "Driver Absent",
+    "pathURL": "/report",
+    "accessToRoles": [
+      "PROJECT_MANAGER",
+      "SITE_ADMIN",
+      "ADMIN",
+      "TRANSPORT_MANAGER",
+      "TRANSPORT_MANAGER_NO_BILLING",
+      "VENDOR_MANAGER",
+      "ROUTE_MANAGER",
+      "OPERATIONS"
+    ],
+    "isEnabled": True,
+    "sendEmail": True,
+    "reportType": "Billing",
+    "alertType": "",
+    "reportParams": {
+      "bunitIdKey": "bunit",
+      "startDateKey": "startDate",
+      "endDateKey": "end_date",
+      "otherKey": ""
+    }
+  },
+  {
+    "reportName": "Settlement_Report",
+    "displayName": "Settlement",
+    "pathURL": "/report",
+    "accessToRoles": [
+      "PROJECT_MANAGER",
+      "SITE_ADMIN",
+      "ADMIN",
+      "TRANSPORT_MANAGER",
+      "TRANSPORT_MANAGER_NO_BILLING",
+      "VENDOR_MANAGER",
+      "ROUTE_MANAGER",
+      "OPERATIONS"
+    ],
+    "isEnabled": True,
+    "sendEmail": True,
+    "reportType": "Billing",
+    "alertType": "",
+    "reportParams": {
+      "bunitIdKey": "bunit",
+      "startDateKey": "startDate",
+      "endDateKey": "end_date",
+      "otherKey": "",
+      "reportFilters": {
+        "office": "office_1"
+      }
+    },
+    "dependentJobs": [
+      "RBD"
+    ]
+  },
+  {
+    "reportName": "Parking_Toll_Report",
+    "displayName": "Parking Toll",
+    "pathURL": "/report",
+    "accessToRoles": [
+      "PROJECT_MANAGER",
+      "SITE_ADMIN",
+      "ADMIN",
+      "TRANSPORT_MANAGER",
+      "TRANSPORT_MANAGER_NO_BILLING",
+      "VENDOR_MANAGER",
+      "ROUTE_MANAGER",
+      "OPERATIONS"
+    ],
+    "isEnabled": True,
+    "sendEmail": True,
+    "reportType": "Billing",
+    "reportParams": {
+      "bunitIdKey": "bunit_id_1",
+      "startDateKey": "trip_date_1",
+      "endDateKey": "trip_date_2",
+      "otherKey": "",
+      "reportFilters": {
+        "office": "office_1"
+      }
+    },
+    "dependentJobs": [
+      "RBD"
+    ]
+  },
+  {
+    "reportName": "Billing_Prorate_Report",
+    "displayName": "Billing Prorate",
+    "pathURL": "/report",
+    "accessToRoles": [
+      "PROJECT_MANAGER",
+      "SITE_ADMIN",
+      "ADMIN",
+      "TRANSPORT_MANAGER",
+      "TRANSPORT_MANAGER_NO_BILLING",
+      "VENDOR_MANAGER",
+      "ROUTE_MANAGER",
+      "OPERATIONS"
+    ],
+    "isEnabled": True,
+    "sendEmail": True,
+    "reportType": "Billing",
+    "reportParams": {
+      "bunitIdKey": "bunit_id_1",
+      "startDateKey": "trip_date_1",
+      "endDateKey": "trip_date_2",
+      "reportFilters": {},
+      "otherKey": ""
+    }
+  },
+  {
+    "reportName": "Security_Alerts_Daily_Counts_Report",
+    "displayName": "Security Alerts Daily Counts",
+    "jasperReportName": "Security_Alerts_Detail_Report_Jasper",
+    "pathURL": "/jasper-report",
+    "jasperReportPath": "/reports/MoveinSync_Public/Reports/SecurityAlertsDailyCounts",
+    "accessToRoles": [
+      "PROJECT_MANAGER",
+      "SITE_ADMIN",
+      "ADMIN",
+      "TRANSPORT_MANAGER",
+      "TRANSPORT_MANAGER_NO_BILLING",
+      "VENDOR_MANAGER",
+      "ROUTE_MANAGER",
+      "OPERATIONS"
+    ],
+    "isEnabled": True,
+    "sendEmail": True,
+    "reportType": "Employee Security",
+    "jasperColumns": [
+      "starttime",
+      "sos fixed device",
+      "sos mobile device",
+      "sos employee app",
+      "tamper alert fixed device",
+      "over speeding",
+      "fixed device not reachable",
+      "employee geofence violation",
+      "vehicle stoppage",
+      "employee sign off time violation",
+      "device not reachable",
+      "woman travelling alone",
+      "unsafe zone"
+    ],
+    "reportColumns": [
+      "starttime",
+      "sos fixed device",
+      "sos mobile device",
+      "sos employee app",
+      "tamper alert fixed device",
+      "over speeding",
+      "fixed device not reachable",
+      "employee geofence violation",
+      "vehicle stoppage",
+      "employee sign off time violation",
+      "device not reachable",
+      "woman travelling alone",
+      "unsafe zone"
+    ],
+    "reportHeaders": [
+      "Date",
+      "SOS Fixed Device",
+      "SOS Mobile Device",
+      "SOS Employee App",
+      "Tamper Alert Fixed Device",
+      "Over Speeding",
+      "Fixed Device Not Reachable",
+      "Employee Geofence Violation",
+      "Vehicle Stoppage",
+      "Employee Sign Off Time Violation",
+      "Device Not Reachable",
+      "Woman Travelling Alone",
+      "Unsafe Zone"
+    ],
+    "alertType": "",
+    "reportParams": {
+      "bunitIdKey": "buid1_1",
+      "startDateKey": "starttime1_1",
+      "endDateKey": "starttime1_2",
+      "otherKey": ""
+    },
+    "dependentJobs": [
+      "ALERT"
+    ]
+  },
+  {
+    "reportName": "SOS_Device_Report",
+    "displayName": "SOS Alert From Device",
+    "jasperReportName": "Security_Alerts_Detail_Report_Jasper",
+    "pathURL": "/report",
+    "jasperReportPath": "/reports/MoveinSync_Public/Reports/Reporting_Service/Security_Alerts_Detail_Report_Jasper",
+    "accessToRoles": [
+      "PROJECT_MANAGER",
+      "SITE_ADMIN",
+      "ADMIN",
+      "TRANSPORT_MANAGER",
+      "TRANSPORT_MANAGER_NO_BILLING",
+      "VENDOR_MANAGER",
+      "ROUTE_MANAGER",
+      "OPERATIONS"
+    ],
+    "isEnabled": True,
+    "sendEmail": True,
+    "reportType": "Employee Security",
+    "alertType": "PANIC_DEVICE",
+    "redshiftColumns": [
+      "bunit_id",
+      "emp_guid",
+      "cab_guid",
+      "start_time",
+      "triggered_time",
+      "emp_guid",
+      "updated_time",
+      "closed_by",
+      "comments",
+      "landmark",
+      "(CASE WHEN firstcut.alerts.state = 1 THEN 'Open' WHEN firstcut.alerts.state = 2 THEN 'Closed' ELSE 'New' END) AS state",
+      "closedby_bunit",
+      "severity"
+    ],
+    "jasperColumns": [
+      "bunit_id",
+      "event_id",
+      "event_type",
+      "state_text",
+      "cab_guid",
+      "emp_guid",
+      "trip_guid",
+      "comments",
+      "escalation_level",
+      "source",
+      "landmark",
+      "start_location",
+      "end_location",
+      "actual_signoff_location",
+      "actual_signoff_geocords",
+      "planned_signoff_location",
+      "planned_signoff_geocords",
+      "closed_by",
+      "raised_by",
+      "reason",
+      "external_device_imei",
+      "state",
+      "speed",
+      "distance",
+      "start_time",
+      "end_time",
+      "updated_time",
+      "triggered_time",
+      "trip_start_time",
+      "planned_signoff_time",
+      "visible",
+      "acknowledge_time",
+      "closedby_bunit",
+      "severity",
+      "count",
+      "office",
+      "trip_id",
+      "vendor_id",
+      "actual_vendor_cab_id",
+      "actual_cab_registeration",
+      "mis_driver_id",
+      "direction",
+      "shift",
+      "alert_duration"
+    ],
+    "reportColumns": [
+      "office",
+      "cab_vendor",
+      "vendor_id",
+      "actual_vendor_cab_id",
+      "actual_cab_registeration",
+      "driver_contact",
+      "start_time",
+      "triggered_time",
+      "emp_id",
+      "emp_name",
+      "updated_time",
+      "closed_by",
+      "comments",
+      "landmark",
+      "state_text",
+      "closedby_bunit",
+      "severity",
+      "acknowledge_time"
+    ],
+    "reportHeaders": [
+      "Office",
+      "Cab Vendor",
+      "Cab Id",
+      "Cab Display Id",
+      "Driver Name",
+      "Driver Cont No",
+      "Start Time",
+      "Triggered Time",
+      "Emp Id",
+      "Emp Name",
+      "Updated Time",
+      "Closed By",
+      "Comments",
+      "Start Location",
+      "State",
+      "Closedby Bunit",
+      "Severity",
+      "Acknowledge Time"
+    ],
+    "reportParams": {
+      "bunitIdKey": "bunit_id_1",
+      "startDateKey": "trip_date_1",
+      "endDateKey": "trip_date_2",
+      "otherKey": "alertType"
+    },
+    "dependentJobs": [
+      "ALERT",
+      "TRIP_FACT"
+    ]
+  },
+  {
+    "reportName": "SOS_Mobile_App_Report",
+    "displayName": "SOS Alert From Mobile App",
+    "jasperReportName": "Security_Alerts_Detail_Report_Jasper",
+    "pathURL": "/report",
+    "jasperReportPath": "/reports/MoveinSync_Public/Reports/Reporting_Service/Security_Alerts_Detail_Report_Jasper",
+    "accessToRoles": [
+      "PROJECT_MANAGER",
+      "SITE_ADMIN",
+      "ADMIN",
+      "TRANSPORT_MANAGER",
+      "TRANSPORT_MANAGER_NO_BILLING",
+      "VENDOR_MANAGER",
+      "ROUTE_MANAGER",
+      "OPERATIONS"
+    ],
+    "isEnabled": True,
+    "sendEmail": True,
+    "reportType": "Employee Security",
+    "alertType": "PANIC_MOBILE",
+    "redshiftColumns": [
+      "firstcut.rbd.trip_office",
+      "firstcut.alerts.cab_guid",
+      "firstcut.alerts.raised_by as emp_guid",
+      "firstcut.rbd.bunit_id",
+      "firstcut.rbd.vendor",
+      "firstcut.rbd.display_cab_id",
+      "firstcut.rbd.actual_cab_registration",
+      "(CASE WHEN firstcut.rbd.direction = 'LOGIN' THEN 'IN' ELSE 'OUT' END) AS direction",
+      "firstcut.rbd.shift",
+      "firstcut.rbd.trip_id",
+      "firstcut.alerts.start_time",
+      "firstcut.alerts.triggered_time",
+      "firstcut.alerts.updated_time",
+      "firstcut.alerts.closed_by",
+      "firstcut.alerts.comments",
+      "firstcut.alerts.actual_signoff_location",
+      "firstcut.alerts.closedby_bunit",
+      "firstcut.alerts.severity",
+      "(CASE WHEN firstcut.alerts.state = 1 THEN 'Open' WHEN firstcut.alerts.state = 2 THEN 'Closed' ELSE 'New' END) AS state",
+      "firstcut.alerts.landmark"
+    ],
+    "jasperColumns": [
+      "bunit_id",
+      "event_id",
+      "event_type",
+      "state_text",
+      "cab_guid",
+      "emp_guid",
+      "trip_guid",
+      "comments",
+      "escalation_level",
+      "source",
+      "landmark",
+      "start_location",
+      "end_location",
+      "actual_signoff_location",
+      "actual_signoff_geocords",
+      "planned_signoff_location",
+      "planned_signoff_geocords",
+      "closed_by",
+      "raised_by",
+      "reason",
+      "external_device_imei",
+      "state",
+      "speed",
+      "distance",
+      "start_time",
+      "end_time",
+      "updated_time",
+      "triggered_time",
+      "trip_start_time",
+      "planned_signoff_time",
+      "visible",
+      "acknowledge_time",
+      "closedby_bunit",
+      "severity",
+      "count",
+      "office",
+      "trip_id",
+      "vendor_id",
+      "actual_vendor_cab_id",
+      "actual_cab_registeration",
+      "mis_driver_id",
+      "direction",
+      "shift",
+      "alert_duration"
+    ],
+    "reportColumns": [
+      "bunit_id",
+      "office",
+      "vendor_id",
+      "actual_vendor_cab_id",
+      "actual_cab_registeration",
+      "driver_name",
+      "driver_contact",
+      "direction",
+      "shift",
+      "trip_id",
+      "start_time",
+      "triggered_time",
+      "emp_id",
+      "emp_name",
+      "emp_gender",
+      "updated_time",
+      "closed_by",
+      "comments",
+      "landmark",
+      "state_text",
+      "closedby_bunit",
+      "severity",
+      "acknowledge_time"
+    ],
+    "reportHeaders": [
+      "Bunit Id",
+      "Office",
+      "Cab Vendor",
+      "Cab Id",
+      "Cab Display Id",
+      "Driver Name",
+      "Driver Cont No",
+      "Direction",
+      "Shift",
+      "Trip Id",
+      "Start Time",
+      "Triggered Time",
+      "Emp Id",
+      "Emp Name",
+      "Emp Gender",
+      "Updated Time",
+      "Closed By",
+      "Comments",
+      "Start Location",
+      "State",
+      "Closedby Bunit",
+      "Severity",
+      "Acknowledge Time"
+    ],
+    "reportParams": {
+      "bunitIdKey": "bunit_id_1",
+      "startDateKey": "trip_date_1",
+      "endDateKey": "trip_date_2",
+      "otherKey": "alertType",
+      "reportFilters": {
+        "office": "office_1"
+      }
+    },
+    "dependentJobs": [
+      "ALERT",
+      "TRIP_FACT"
+    ]
+  },
+  {
+    "reportName": "SOS_Fixed_Device_Report",
+    "displayName": "SOS Alert From Fixed Device",
+    "jasperReportName": "Security_Alerts_Detail_Report_Jasper",
+    "pathURL": "/report",
+    "jasperReportPath": "/reports/MoveinSync_Public/Reports/Reporting_Service/Security_Alerts_Detail_Report_Jasper",
+    "accessToRoles": [
+      "PROJECT_MANAGER",
+      "SITE_ADMIN",
+      "ADMIN",
+      "TRANSPORT_MANAGER",
+      "TRANSPORT_MANAGER_NO_BILLING",
+      "VENDOR_MANAGER",
+      "ROUTE_MANAGER",
+      "OPERATIONS"
+    ],
+    "isEnabled": True,
+    "sendEmail": True,
+    "reportType": "Employee Security",
+    "alertType": "PANIC_FIXED_DEVICE",
+    "redshiftColumns": [
+      "bunit_id",
+      "emp_guid",
+      "cab_guid",
+      "start_time",
+      "triggered_time",
+      "emp_guid",
+      "updated_time",
+      "closed_by",
+      "comments",
+      "landmark",
+      "state",
+      "closedby_bunit",
+      "severity"
+    ],
+    "jasperColumns": [
+      "bunit_id",
+      "event_id",
+      "event_type",
+      "state_text",
+      "cab_guid",
+      "emp_guid",
+      "trip_guid",
+      "comments",
+      "escalation_level",
+      "source",
+      "landmark",
+      "start_location",
+      "end_location",
+      "actual_signoff_location",
+      "actual_signoff_geocords",
+      "planned_signoff_location",
+      "planned_signoff_geocords",
+      "closed_by",
+      "raised_by",
+      "reason",
+      "external_device_imei",
+      "state",
+      "speed",
+      "distance",
+      "start_time",
+      "end_time",
+      "updated_time",
+      "triggered_time",
+      "trip_start_time",
+      "planned_signoff_time",
+      "visible",
+      "acknowledge_time",
+      "closedby_bunit",
+      "severity",
+      "count",
+      "office",
+      "trip_id",
+      "vendor_id",
+      "actual_vendor_cab_id",
+      "actual_cab_registeration",
+      "mis_driver_id",
+      "direction",
+      "shift",
+      "alert_duration"
+    ],
+    "reportColumns": [
+      "office",
+      "vendor_id",
+      "actual_vendor_cab_id",
+      "actual_cab_registeration",
+      "driver_name",
+      "driver_contact",
+      "start_time",
+      "triggered_time",
+      "emp_id",
+      "emp_name",
+      "updated_time",
+      "closed_by",
+      "comments",
+      "landmark",
+      "state_text",
+      "closedby_bunit",
+      "severity",
+      "acknowledge_time"
+    ],
+    "reportHeaders": [
+      "Office",
+      "Vendor Name",
+      "Cab Id",
+      "Cab Reg No",
+      "Driver Name",
+      "Driver Contact Number",
+      "Start Time",
+      "Triggered Time",
+      "Employee Id",
+      "Employee Name",
+      "Update Time",
+      "Closed By",
+      "Comments",
+      "Triggered Location",
+      "State",
+      "Closed By BusinessUnit",
+      "Severity",
+      "Acknowledge Time"
+    ],
+    "reportParams": {
+      "bunitIdKey": "bunit_id_1",
+      "startDateKey": "trip_date_1",
+      "endDateKey": "trip_date_2",
+      "otherKey": "alertType"
+    },
+    "dependentJobs": [
+      "ALERT",
+      "TRIP_FACT"
+    ]
+  },
+  {
+    "reportName": "Tamper_External_Device_Report",
+    "displayName": "Tamper Alert From External Device",
+    "jasperReportName": "Security_Alerts_Detail_Report_Jasper",
+    "pathURL": "/report",
+    "jasperReportPath": "/reports/MoveinSync_Public/Reports/Reporting_Service/Security_Alerts_Detail_Report_Jasper",
+    "accessToRoles": [
+      "PROJECT_MANAGER",
+      "SITE_ADMIN",
+      "ADMIN",
+      "TRANSPORT_MANAGER",
+      "TRANSPORT_MANAGER_NO_BILLING",
+      "VENDOR_MANAGER",
+      "ROUTE_MANAGER",
+      "OPERATIONS"
+    ],
+    "isEnabled": True,
+    "sendEmail": True,
+    "reportType": "Employee Security",
+    "alertType": "TAMPER_EXTERNAL_DEVICE",
+    "redshiftColumns": [
+      "bunit_id",
+      "emp_guid",
+      "cab_guid",
+      "start_time",
+      "triggered_time",
+      "emp_guid",
+      "updated_time",
+      "closed_by",
+      "comments",
+      "landmark",
+      "state",
+      "closedby_bunit",
+      "severity"
+    ],
+    "jasperColumns": [
+      "bunit_id",
+      "event_id",
+      "event_type",
+      "state_text",
+      "cab_guid",
+      "emp_guid",
+      "trip_guid",
+      "comments",
+      "escalation_level",
+      "source",
+      "landmark",
+      "start_location",
+      "end_location",
+      "actual_signoff_location",
+      "actual_signoff_geocords",
+      "planned_signoff_location",
+      "planned_signoff_geocords",
+      "closed_by",
+      "raised_by",
+      "reason",
+      "external_device_imei",
+      "state",
+      "speed",
+      "distance",
+      "start_time",
+      "end_time",
+      "updated_time",
+      "triggered_time",
+      "trip_start_time",
+      "planned_signoff_time",
+      "visible",
+      "acknowledge_time",
+      "closedby_bunit",
+      "severity",
+      "count",
+      "office",
+      "trip_id",
+      "vendor_id",
+      "actual_vendor_cab_id",
+      "actual_cab_registeration",
+      "mis_driver_id",
+      "direction",
+      "shift",
+      "alert_duration"
+    ],
+    "reportColumns": [
+      "office",
+      "vendor_id",
+      "actual_vendor_cab_id",
+      "actual_cab_registeration",
+      "driver_name",
+      "driver_contact",
+      "start_time",
+      "triggered_time",
+      "updated_time",
+      "closed_by",
+      "comments",
+      "landmark",
+      "state_text",
+      "closedby_bunit",
+      "severity",
+      "acknowledge_time"
+    ],
+    "reportHeaders": [
+      "Office",
+      "Vendor Name",
+      "Cab Id",
+      "Cab Reg No",
+      "Driver Name",
+      "Driver Contact Number",
+      "Start Time",
+      "Triggered Time",
+      "Update Time",
+      "Closed By",
+      "Comments",
+      "Triggered Location",
+      "State",
+      "Closed By BusinessUnit",
+      "Severity",
+      "Acknowledge Time"
+    ],
+    "reportParams": {
+      "bunitIdKey": "bunit_id_1",
+      "startDateKey": "trip_date_1",
+      "endDateKey": "trip_date_2",
+      "otherKey": "alertType"
+    },
+    "dependentJobs": [
+      "ALERT",
+      "TRIP_FACT"
+    ]
+  },
+  {
+    "reportName": "Device_Not_Reachable_Report",
+    "displayName": "Device Not Reachable",
+    "jasperReportName": "Security_Alerts_Detail_Report_Jasper",
+    "pathURL": "/report",
+    "jasperReportPath": "/reports/MoveinSync_Public/Reports/Reporting_Service/Security_Alerts_Detail_Report_Jasper",
+    "accessToRoles": [
+      "PROJECT_MANAGER",
+      "SITE_ADMIN",
+      "ADMIN",
+      "TRANSPORT_MANAGER",
+      "TRANSPORT_MANAGER_NO_BILLING",
+      "VENDOR_MANAGER",
+      "ROUTE_MANAGER",
+      "OPERATIONS"
+    ],
+    "isEnabled": True,
+    "sendEmail": True,
+    "reportType": "Employee Security",
+    "alertType": "DEVICE_NOT_REACHABLE",
+    "redshiftColumns": [
+      "bunit_id",
+      "emp_guid",
+      "cab_guid",
+      "start_time",
+      "triggered_time",
+      "emp_guid",
+      "updated_time",
+      "closed_by",
+      "comments",
+      "landmark",
+      "(CASE WHEN firstcut.alerts.state = 1 THEN 'Open' WHEN firstcut.alerts.state = 2 THEN 'Closed' ELSE 'New' END) AS state",
+      "closedby_bunit",
+      "severity"
+    ],
+    "jasperColumns": [
+      "bunit_id",
+      "event_id",
+      "event_type",
+      "state_text",
+      "cab_guid",
+      "emp_guid",
+      "trip_guid",
+      "comments",
+      "escalation_level",
+      "source",
+      "landmark",
+      "start_location",
+      "end_location",
+      "actual_signoff_location",
+      "actual_signoff_geocords",
+      "planned_signoff_location",
+      "planned_signoff_geocords",
+      "closed_by",
+      "raised_by",
+      "reason",
+      "external_device_imei",
+      "state",
+      "speed",
+      "distance",
+      "start_time",
+      "end_time",
+      "updated_time",
+      "triggered_time",
+      "trip_start_time",
+      "planned_signoff_time",
+      "visible",
+      "acknowledge_time",
+      "closedby_bunit",
+      "severity",
+      "count",
+      "office",
+      "trip_id",
+      "vendor_id",
+      "actual_vendor_cab_id",
+      "actual_cab_registeration",
+      "mis_driver_id",
+      "direction",
+      "shift",
+      "alert_duration"
+    ],
+    "reportColumns": [
+      "office",
+      "vendor_id",
+      "actual_vendor_cab_id",
+      "actual_cab_registeration",
+      "driver_name",
+      "driver_contact",
+      "start_time",
+      "triggered_time",
+      "updated_time",
+      "closed_by",
+      "comments",
+      "landmark",
+      "state_text",
+      "closedby_bunit",
+      "severity",
+      "acknowledge_time"
+    ],
+    "reportHeaders": [
+      "Office",
+      "Vendor Name",
+      "Cab Id",
+      "Cab Reg No",
+      "Driver Name",
+      "Driver Contact Number",
+      "Start Time",
+      "Triggered Time",
+      "Update Time",
+      "Closed By",
+      "Comments",
+      "Triggered Location",
+      "State",
+      "Closed By BusinessUnit",
+      "Severity",
+      "Acknowledge Time"
+    ],
+    "reportParams": {
+      "bunitIdKey": "bunit_id_1",
+      "startDateKey": "trip_date_1",
+      "endDateKey": "trip_date_2",
+      "otherKey": "alertType"
+    },
+    "dependentJobs": [
+      "ALERT",
+      "TRIP_FACT"
+    ]
+  },
+  {
+    "reportName": "Fixed_Device_Not_Reachable_Report",
+    "displayName": "Fixed Device Not Reachable",
+    "jasperReportName": "Security_Alerts_Detail_Report_Jasper",
+    "pathURL": "/report",
+    "jasperReportPath": "/reports/MoveinSync_Public/Reports/Reporting_Service/Security_Alerts_Detail_Report_Jasper",
+    "accessToRoles": [
+      "PROJECT_MANAGER",
+      "SITE_ADMIN",
+      "ADMIN",
+      "TRANSPORT_MANAGER",
+      "TRANSPORT_MANAGER_NO_BILLING",
+      "VENDOR_MANAGER",
+      "ROUTE_MANAGER",
+      "OPERATIONS"
+    ],
+    "isEnabled": True,
+    "sendEmail": True,
+    "reportType": "Employee Security",
+    "alertType": "FIXED_DEVICE_NOT_REACHABLE",
+    "redshiftColumns": [
+      "actual_signoff_location",
+      "bunit_id",
+      "emp_guid",
+      "cab_guid",
+      "start_time",
+      "triggered_time",
+      "emp_guid",
+      "updated_time",
+      "closed_by",
+      "comments",
+      "landmark",
+      "(CASE WHEN firstcut.alerts.state = 1 THEN 'Open' WHEN firstcut.alerts.state = 2 THEN 'Closed' ELSE 'New' END) AS state",
+      "closedby_bunit",
+      "severity"
+    ],
+    "jasperColumns": [
+      "bunit_id",
+      "event_id",
+      "event_type",
+      "state_text",
+      "cab_guid",
+      "emp_guid",
+      "trip_guid",
+      "comments",
+      "escalation_level",
+      "source",
+      "landmark",
+      "start_location",
+      "end_location",
+      "actual_signoff_location",
+      "actual_signoff_geocords",
+      "planned_signoff_location",
+      "planned_signoff_geocords",
+      "closed_by",
+      "raised_by",
+      "reason",
+      "external_device_imei",
+      "state",
+      "speed",
+      "distance",
+      "start_time",
+      "end_time",
+      "updated_time",
+      "triggered_time",
+      "trip_start_time",
+      "planned_signoff_time",
+      "visible",
+      "acknowledge_time",
+      "closedby_bunit",
+      "severity",
+      "count",
+      "office",
+      "trip_id",
+      "vendor_id",
+      "actual_vendor_cab_id",
+      "actual_cab_registeration",
+      "mis_driver_id",
+      "direction",
+      "shift",
+      "alert_duration"
+    ],
+    "reportColumns": [
+      "office",
+      "vendor_id",
+      "actual_vendor_cab_id",
+      "actual_cab_registeration",
+      "driver_name",
+      "driver_contact",
+      "start_time",
+      "triggered_time",
+      "updated_time",
+      "closed_by",
+      "comments",
+      "landmark",
+      "state_text",
+      "closedby_bunit",
+      "severity",
+      "acknowledge_time"
+    ],
+    "reportHeaders": [
+      "Office",
+      "Vendor Name",
+      "Cab Id",
+      "Cab Reg No",
+      "Driver Name",
+      "Driver Contact Number",
+      "Start Time",
+      "Triggered Time",
+      "Update Time",
+      "Closed By",
+      "Comments",
+      "Triggered Location",
+      "State",
+      "Closed By BusinessUnit",
+      "Severity",
+      "Acknowledge Time"
+    ],
+    "reportParams": {
+      "bunitIdKey": "bunit_id_1",
+      "startDateKey": "trip_date_1",
+      "endDateKey": "trip_date_2",
+      "otherKey": "alertType"
+    },
+    "dependentJobs": [
+      "ALERT",
+      "TRIP_FACT"
+    ]
+  },
+  {
+    "reportName": "Vehicle_Stoppage_Report",
+    "displayName": "Vehicle Stopped",
+    "jasperReportName": "Security_Alerts_Detail_Report_Jasper",
+    "pathURL": "/report",
+    "jasperReportPath": "/reports/MoveinSync_Public/Reports/Reporting_Service/Security_Alerts_Detail_Report_Jasper",
+    "accessToRoles": [
+      "PROJECT_MANAGER",
+      "SITE_ADMIN",
+      "ADMIN",
+      "TRANSPORT_MANAGER",
+      "TRANSPORT_MANAGER_NO_BILLING",
+      "VENDOR_MANAGER",
+      "ROUTE_MANAGER",
+      "OPERATIONS"
+    ],
+    "isEnabled": True,
+    "sendEmail": True,
+    "reportType": "Employee Security",
+    "alertType": "VEHICLE_STOPPAGE",
+    "redshiftColumns": [
+      "a.cab_guid",
+      "a.bunit_id",
+      "a.emp_guid",
+      "a.start_time",
+      "a.updated_time",
+      "a.closed_by",
+      "a.comments",
+      "a.landmark",
+      "a.closedby_bunit",
+      "a.severity",
+      "(CASE   WHEN a.state = 1 THEN 'Open'   WHEN a.state = 2 THEN 'Closed' ELSE 'New'  END) AS state",
+      "t.driver_name",
+      "t.driver_contact",
+      "t.vendor_id",
+      "t.actual_vendor_cab_id",
+      "t.actual_cab_registration"
+    ],
+    "jasperColumns": [
+      "bunit_id",
+      "event_id",
+      "event_type",
+      "state_text",
+      "cab_guid",
+      "emp_guid",
+      "trip_guid",
+      "comments",
+      "escalation_level",
+      "source",
+      "landmark",
+      "start_location",
+      "end_location",
+      "actual_signoff_location",
+      "actual_signoff_geocords",
+      "planned_signoff_location",
+      "planned_signoff_geocords",
+      "closed_by",
+      "raised_by",
+      "reason",
+      "external_device_imei",
+      "state",
+      "speed",
+      "distance",
+      "start_time",
+      "end_time",
+      "updated_time",
+      "triggered_time",
+      "trip_start_time",
+      "planned_signoff_time",
+      "visible",
+      "acknowledge_time",
+      "closedby_bunit",
+      "severity",
+      "count",
+      "office",
+      "trip_id",
+      "vendor_id",
+      "actual_vendor_cab_id",
+      "actual_cab_registeration",
+      "mis_driver_id",
+      "direction",
+      "shift",
+      "alert_duration"
+    ],
+    "reportColumns": [
+      "office",
+      "trip_id",
+      "vendor_id",
+      "actual_vendor_cab_id",
+      "actual_cab_registeration",
+      "driver_name",
+      "driver_contact",
+      "start_time",
+      "updated_time",
+      "closed_by",
+      "comments",
+      "landmark",
+      "state_text",
+      "closedby_bunit",
+      "severity",
+      "acknowledge_time",
+      "alert_duration"
+    ],
+    "reportHeaders": [
+      "Office",
+      "Trip Id",
+      "Vendor Name",
+      "Cab Id",
+      "Cab Reg No",
+      "Driver Name",
+      "Driver Contact Number",
+      "Start Time",
+      "Update Time",
+      "Closed By",
+      "Comments",
+      "Triggered Location",
+      "State",
+      "Closed By BusinessUnit",
+      "Severity",
+      "Acknowledge Time",
+      "Alert Duration"
+    ],
+    "reportParams": {
+      "bunitIdKey": "bunit_id_1",
+      "startDateKey": "trip_date_1",
+      "endDateKey": "trip_date_2",
+      "otherKey": "alertType",
+      "reportFilters": {
+        "office": "office_1"
+      }
+    },
+    "dependentJobs": [
+      "ALERT",
+      "TRIP_FACT"
+    ]
+  },
+  {
+    "reportName": "Employee_Signoff_Violation_Report",
+    "displayName": "Employee Sign Off Time Violation",
+    "jasperReportName": "Security_Alerts_Detail_Report_Jasper",
+    "pathURL": "/report",
+    "jasperReportPath": "/reports/MoveinSync_Public/Reports/Reporting_Service/Security_Alerts_Detail_Report_Jasper",
+    "accessToRoles": [
+      "PROJECT_MANAGER",
+      "SITE_ADMIN",
+      "ADMIN",
+      "TRANSPORT_MANAGER",
+      "TRANSPORT_MANAGER_NO_BILLING",
+      "VENDOR_MANAGER",
+      "ROUTE_MANAGER",
+      "OPERATIONS"
+    ],
+    "isEnabled": True,
+    "sendEmail": True,
+    "reportType": "Employee Security",
+    "alertType": "EMPLOYEE_SIGN_OFF_TIME_VIOLATION",
+    "redshiftColumns": [
+      "firstcut.alerts.emp_guid ",
+      "firstcut.alerts.cab_guid",
+      "firstcut.rbd.trip_office",
+      "firstcut.rbd.vendor",
+      "firstcut.rbd.display_cab_id",
+      "firstcut.rbd.actual_cab_registration",
+      "(CASE WHEN firstcut.rbd.direction = 'LOGIN' THEN 'IN' ELSE 'OUT' END) AS direction",
+      "firstcut.rbd.shift",
+      "firstcut.rbd.trip_id",
+      "firstcut.alerts.start_time",
+      "firstcut.alerts.bunit_id",
+      "firstcut.alerts.triggered_time",
+      "firstcut.alerts.updated_time",
+      "firstcut.alerts.closed_by",
+      "firstcut.alerts.comments",
+      "firstcut.alerts.landmark",
+      "(CASE WHEN firstcut.alerts.state = 1 THEN 'Open' WHEN firstcut.alerts.state = 2 THEN 'Closed' ELSE 'New' END) AS state",
+      "firstcut.alerts.closedby_bunit",
+      "firstcut.alerts.severity"
+    ],
+    "jasperColumns": [
+      "bunit_id",
+      "event_id",
+      "event_type",
+      "state_text",
+      "cab_guid",
+      "emp_guid",
+      "trip_guid",
+      "comments",
+      "escalation_level",
+      "source",
+      "landmark",
+      "start_location",
+      "end_location",
+      "actual_signoff_location",
+      "actual_signoff_geocords",
+      "planned_signoff_location",
+      "planned_signoff_geocords",
+      "closed_by",
+      "raised_by",
+      "reason",
+      "external_device_imei",
+      "state",
+      "speed",
+      "distance",
+      "start_time",
+      "end_time",
+      "updated_time",
+      "triggered_time",
+      "trip_start_time",
+      "planned_signoff_time",
+      "visible",
+      "acknowledge_time",
+      "closedby_bunit",
+      "severity",
+      "count",
+      "office",
+      "trip_id",
+      "vendor_id",
+      "actual_vendor_cab_id",
+      "actual_cab_registeration",
+      "mis_driver_id",
+      "direction",
+      "shift",
+      "alert_duration"
+    ],
+    "reportColumns": [
+      "bunit_id",
+      "office",
+      "vendor_id",
+      "actual_vendor_cab_id",
+      "actual_cab_registeration",
+      "direction",
+      "shift",
+      "trip_id",
+      "driver_name",
+      "driver_contact",
+      "start_time",
+      "triggered_time",
+      "emp_id",
+      "emp_name",
+      "emp_gender",
+      "updated_time",
+      "closed_by",
+      "comments",
+      "state_text",
+      "closedby_bunit",
+      "severity",
+      "acknowledge_time"
+    ],
+    "reportHeaders": [
+      "Bunit Id",
+      "Office",
+      "Cab Vendor",
+      "Cab Id",
+      "Cab Display Id",
+      "Direction",
+      "Shift",
+      "Trip Id",
+      "Driver Name",
+      "Driver Cont No",
+      "Start Time",
+      "Triggered Time",
+      "Emp Id",
+      "Emp Name",
+      "Emp Gender",
+      "Updated Time",
+      "Closed By",
+      "Comments",
+      "State",
+      "Closedby Bunit",
+      "Severity",
+      "Acknowledge Time"
+    ],
+    "reportParams": {
+      "bunitIdKey": "bunit_id_1",
+      "startDateKey": "trip_date_1",
+      "endDateKey": "trip_date_2",
+      "otherKey": "alertType",
+      "reportFilters": {
+        "office": "office_1"
+      }
+    },
+    "dependentJobs": [
+      "ALERT",
+      "TRIP_FACT"
+    ]
+  },
+  {
+    "reportName": "Employee_Geo_Fence_Violation_Report",
+    "displayName": "Employee Geo Fence Violation",
+    "jasperReportName": "Security_Alerts_Detail_Report_Jasper",
+    "pathURL": "/report",
+    "jasperReportPath": "/reports/MoveinSync_Public/Reports/Reporting_Service/Security_Alerts_Detail_Report_Jasper",
+    "accessToRoles": [
+      "PROJECT_MANAGER",
+      "SITE_ADMIN",
+      "ADMIN",
+      "TRANSPORT_MANAGER",
+      "TRANSPORT_MANAGER_NO_BILLING",
+      "VENDOR_MANAGER",
+      "ROUTE_MANAGER",
+      "OPERATIONS"
+    ],
+    "isEnabled": True,
+    "sendEmail": True,
+    "reportType": "Employee Security",
+    "alertType": "EMPLOYEE_GEOFENCE_VIOLATION",
+    "redshiftColumns": [
+      "firstcut.fact_employee.sign_off_distance",
+      "firstcut.alerts.emp_guid ",
+      "firstcut.alerts.cab_guid",
+      "firstcut.rbd.trip_office",
+      "firstcut.rbd.vendor",
+      "firstcut.rbd.display_cab_id",
+      "firstcut.rbd.actual_cab_registration",
+      "(CASE WHEN firstcut.rbd.direction = 'LOGIN' THEN 'IN' ELSE 'OUT' END) AS direction",
+      "firstcut.rbd.shift",
+      "firstcut.rbd.trip_id",
+      "firstcut.alerts.start_time",
+      "firstcut.alerts.triggered_time",
+      "firstcut.alerts.updated_time",
+      "firstcut.alerts.closed_by",
+      "firstcut.alerts.comments",
+      "firstcut.alerts.landmark",
+      "firstcut.rbd.bunit_id",
+      "firstcut.alerts.closedby_bunit",
+      "firstcut.alerts.severity",
+      "(CASE WHEN firstcut.alerts.state = 1 THEN 'Open' WHEN firstcut.alerts.state = 2 THEN 'Closed' ELSE 'New' END) AS state"
+    ],
+    "jasperColumns": [
+      "bunit_id",
+      "event_id",
+      "event_type",
+      "state_text",
+      "cab_guid",
+      "emp_guid",
+      "trip_guid",
+      "comments",
+      "escalation_level",
+      "source",
+      "landmark",
+      "start_location",
+      "end_location",
+      "actual_signoff_location",
+      "actual_signoff_geocords",
+      "planned_signoff_location",
+      "planned_signoff_geocords",
+      "closed_by",
+      "raised_by",
+      "reason",
+      "external_device_imei",
+      "state",
+      "speed",
+      "distance",
+      "start_time",
+      "end_time",
+      "updated_time",
+      "triggered_time",
+      "trip_start_time",
+      "planned_signoff_time",
+      "visible",
+      "acknowledge_time",
+      "closedby_bunit",
+      "severity",
+      "count",
+      "office",
+      "trip_id",
+      "vendor_id",
+      "actual_vendor_cab_id",
+      "actual_cab_registeration",
+      "mis_driver_id",
+      "direction",
+      "shift",
+      "alert_duration"
+    ],
+    "reportColumns": [
+      "bunit_id",
+      "office",
+      "vendor_id",
+      "actual_vendor_cab_id",
+      "actual_cab_registeration",
+      "direction",
+      "shift",
+      "trip_id",
+      "driver_name",
+      "driver_contact",
+      "start_time",
+      "triggered_time",
+      "emp_id",
+      "emp_name",
+      "emp_gender",
+      "emp_email",
+      "updated_time",
+      "closed_by",
+      "comments",
+      "actual_signoff_location",
+      "state_text",
+      "closedby_bunit",
+      "severity",
+      "acknowledge_time",
+      "planned_signoff_location",
+      "team_name",
+      "team_manager"
+    ],
+    "reportHeaders": [
+      "Bunit Id",
+      "Office",
+      "Cab Vendor",
+      "Cab Id",
+      "Cab Display Id",
+      "Direction",
+      "Shift",
+      "Trip Id",
+      "Driver Name",
+      "Driver Cont No",
+      "Start Time",
+      "Triggered Time",
+      "Emp Id",
+      "Emp Name",
+      "Emp Gender",
+      "Emp Email",
+      "Updated Time",
+      "Closed By",
+      "Comments",
+      "Triggered Location",
+      "State",
+      "Closedby Bunit",
+      "Severity",
+      "Acknowledge Time",
+      "Planned Location",
+      "Team name",
+      "Team Manager"
+    ],
+    "reportParams": {
+      "bunitIdKey": "bunit_id_1",
+      "startDateKey": "trip_date_1",
+      "endDateKey": "trip_date_2",
+      "otherKey": "alertType",
+      "reportFilters": {
+        "office": "office_1"
+      }
+    },
+    "dependentJobs": [
+      "ALERT",
+      "TRIP_FACT"
+    ]
+  },
+  {
+    "reportName": "Women_Travelling_Alone_Report",
+    "displayName": "Women Travelling Alone",
+    "jasperReportName": "Security_Alerts_Detail_Report_Jasper",
+    "pathURL": "/report",
+    "jasperReportPath": "/reports/MoveinSync_Public/Reports/Reporting_Service/Security_Alerts_Detail_Report_Jasper",
+    "accessToRoles": [
+      "PROJECT_MANAGER",
+      "SITE_ADMIN",
+      "ADMIN",
+      "TRANSPORT_MANAGER",
+      "TRANSPORT_MANAGER_NO_BILLING",
+      "VENDOR_MANAGER",
+      "ROUTE_MANAGER",
+      "OPERATIONS"
+    ],
+    "isEnabled": True,
+    "sendEmail": True,
+    "reportType": "Employee Security",
+    "alertType": "WOMAN_TRAVELLING_ALONE",
+    "redshiftColumns": [
+      "firstcut.alerts.emp_guid ",
+      "firstcut.alerts.cab_guid",
+      "firstcut.rbd.vendor",
+      "firstcut.rbd.display_cab_id",
+      "firstcut.rbd.actual_cab_registration",
+      "(CASE WHEN firstcut.rbd.direction = 'LOGIN' THEN 'IN' ELSE 'OUT' END) AS direction",
+      "firstcut.rbd.shift",
+      "firstcut.rbd.trip_id",
+      "firstcut.alerts.start_time",
+      "firstcut.alerts.triggered_time",
+      "firstcut.alerts.updated_time",
+      "firstcut.alerts.closed_by",
+      "firstcut.alerts.comments",
+      "firstcut.alerts.landmark",
+      "firstcut.rbd.bunit_id",
+      "firstcut.alerts.severity",
+      "(CASE WHEN firstcut.alerts.state = 1 THEN 'Open' WHEN firstcut.alerts.state = 2 THEN 'Closed' ELSE 'New' END) AS state",
+      "firstcut.alerts.closedby_bunit",
+      "firstcut.alerts.severity",
+      "firstcut.alerts.start_location"
+    ],
+    "jasperColumns": [
+      "bunit_id",
+      "event_id",
+      "event_type",
+      "state_text",
+      "cab_guid",
+      "emp_guid",
+      "trip_guid",
+      "comments",
+      "escalation_level",
+      "source",
+      "landmark",
+      "start_location",
+      "end_location",
+      "actual_signoff_location",
+      "actual_signoff_geocords",
+      "planned_signoff_location",
+      "planned_signoff_geocords",
+      "closed_by",
+      "raised_by",
+      "reason",
+      "external_device_imei",
+      "state",
+      "speed",
+      "distance",
+      "start_time",
+      "end_time",
+      "updated_time",
+      "triggered_time",
+      "trip_start_time",
+      "planned_signoff_time",
+      "visible",
+      "acknowledge_time",
+      "closedby_bunit",
+      "severity",
+      "count",
+      "office",
+      "trip_id",
+      "vendor_id",
+      "actual_vendor_cab_id",
+      "actual_cab_registeration",
+      "mis_driver_id",
+      "direction",
+      "shift",
+      "alert_duration"
+    ],
+    "reportColumns": [
+      "bunit_id",
+      "vendor_id",
+      "emp_id",
+      " emp_name",
+      "actual_vendor_cab_id",
+      "actual_cab_registeration",
+      "direction",
+      "shift",
+      "trip_id",
+      "driver_name",
+      "driver_contact",
+      "start_time",
+      "triggered_time",
+      "updated_time",
+      "closed_by",
+      "comments",
+      "landmark",
+      "state_text",
+      "closedby_bunit",
+      "severity",
+      "acknowledge_time"
+    ],
+    "reportHeaders": [
+      "Site",
+      "Vendor Name",
+      "Employee Id",
+      "Employee Name",
+      "Cab Id",
+      "Cab Reg No",
+      "Direction",
+      "Shift Type",
+      "Trip Id",
+      "Driver Name",
+      "Driver Contact Number",
+      "Start Time",
+      "Triggered Time",
+      "Update Time",
+      "Closed By",
+      "Comments",
+      "Triggered Location",
+      "State",
+      "Closed By BusinessUnit",
+      "Severity",
+      "Acknowledge Time"
+    ],
+    "reportParams": {
+      "bunitIdKey": "bunit_id_1",
+      "startDateKey": "trip_date_1",
+      "endDateKey": "trip_date_2",
+      "otherKey": "alertType",
+      "reportFilters": {
+        "office": "office_1"
+      }
+    },
+    "dependentJobs": [
+      "ALERT",
+      "TRIP_FACT"
+    ]
+  },
+  {
+    "reportName": "Unsafe_Zone_Alert",
+    "displayName": "Unsafe Zone Alert",
+    "jasperReportName": "Unsafe_Zone_Alert",
+    "pathURL": "/jasper-report",
+    "jasperReportPath": "/reports/MoveinSync_Public/Reports/Reporting_Service/Unsafe_Zone_Alert",
+    "accessToRoles": [
+      "PROJECT_MANAGER",
+      "SITE_ADMIN",
+      "ADMIN",
+      "TRANSPORT_MANAGER",
+      "TRANSPORT_MANAGER_NO_BILLING",
+      "VENDOR_MANAGER",
+      "ROUTE_MANAGER",
+      "OPERATIONS"
+    ],
+    "isEnabled": True,
+    "sendEmail": True,
+    "reportType": "Employee Security",
+    "jasperColumns": [
+      "bunit_id",
+      "start_time",
+      "office",
+      "vendor_id",
+      "actual_vendor_cab_id",
+      "actual_cab_registeration",
+      "driver_name",
+      "driver_contact",
+      "triggered_start_time",
+      "triggered_end_time",
+      "zone_nane",
+      "triggered_time",
+      "start_landmark",
+      "end_landmark",
+      "updated_time",
+      "closed_by",
+      "comments",
+      "state",
+      "closedby_bunit",
+      "severity"
+    ],
+    "reportColumns": [
+      "bunit_id",
+      "start_time",
+      "office",
+      "vendor_id",
+      "actual_vendor_cab_id",
+      "actual_cab_registeration",
+      "driver_name",
+      "driver_contact",
+      "triggered_start_time",
+      "triggered_end_time",
+      "zone_nane",
+      "triggered_time",
+      "start_landmark",
+      "end_landmark",
+      "updated_time",
+      "closed_by",
+      "comments",
+      "state",
+      "closedby_bunit",
+      "severity"
+    ],
+    "reportHeaders": [
+      "Facility",
+      "Alert Date",
+      "Office",
+      "Vendor Name",
+      "Cab Id",
+      "Cab Registeration No.",
+      "Driver Name",
+      "Driver Contact No.",
+      "Zone Entry Date Time",
+      "Zone Exit Date Time",
+      "Zone Name",
+      "Triggered Time",
+      "Entry Location",
+      "Exit Location",
+      "Updated Time",
+      "Closed By",
+      "Comments",
+      "State",
+      "Close by BusinessUnit",
+      "Severity"
+    ],
+    "reportParams": {
+      "bunitIdKey": "bunit_id_1",
+      "startDateKey": "trip_date_1",
+      "endDateKey": "trip_date_2",
+      "otherKey": ""
+    },
+    "dependentJobs": [
+      "ALERT",
+      "TRIP_FACT"
+    ]
+  },
+  {
+    "reportName": "SAFE_REACH_VERIFICATION",
+    "displayName": "Safe Reach Verification",
+    "pathURL": "/report",
+    "accessToRoles": [
+      "PROJECT_MANAGER",
+      "SITE_ADMIN",
+      "ADMIN",
+      "TRANSPORT_MANAGER",
+      "TRANSPORT_MANAGER_NO_BILLING",
+      "VENDOR_MANAGER",
+      "ROUTE_MANAGER",
+      "OPERATIONS"
+    ],
+    "isEnabled": True,
+    "sendEmail": True,
+    "reportType": "Employee Security",
+    "reportHeaders": [
+      "Facility",
+      "Employee Id",
+      "Employee Name",
+      "Gender",
+      "Employee Contact",
+      "Trip Id ",
+      "Trip Date",
+      "Cab Id ",
+      "Cab Reg No",
+      "Driver Name",
+      "Driver Contact",
+      "Verification Status",
+      "Verification Type",
+      "Verification Time",
+      "Logout Shift",
+      "Planned SignIn Time",
+      "Actual SignIn Time",
+      "Planned signoff time",
+      "Actual signoff time",
+      "Escort Name",
+      "VerifiedBy",
+      "Comments",
+      "Office"
+    ],
+    "reportParams": {
+      "bunitIdKey": "bunit_id_1",
+      "startDateKey": "pickup_time_1",
+      "endDateKey": "pickup_time_2",
+      "reportFilters": {
+        "office": "office_1",
+        "vendor": "vendor_id_1",
+        "shift": "shift_time",
+        "shiftType": "shift_time_type",
+        "tripDirection": "trip_direction"
+      }
+    },
+    "dependentJobs": [
+      "DROP_VERIFICATION",
+      "EMP_FACT"
+    ],
+    "downloadOnly": True
+  },
+  {
+    "reportName": "On_Time_Arrival_Summary_Report",
+    "displayName": "On Time Arrival (OTA)",
+    "jasperReportName": "On_Time_Arrival_Summary_Report",
+    "pathURL": "/report",
+    "jasperReportPath": "/reports/MoveinSync_Public/Reports/Reporting_Service/On_Time_Arrival_Summary_Report",
+    "accessToRoles": [
+      "PROJECT_MANAGER",
+      "SITE_ADMIN",
+      "ADMIN",
+      "TRANSPORT_MANAGER",
+      "TRANSPORT_MANAGER_NO_BILLING",
+      "VENDOR_MANAGER",
+      "ROUTE_MANAGER",
+      "OPERATIONS"
+    ],
+    "buRoleWiseAccess": True,
+    "isEnabled": True,
+    "sendEmail": True,
+    "reportType": "Operations Metrics",
+    "jasperColumns": [
+      "trip_date",
+      "bunit_id",
+      "total login trips",
+      "completed login trips",
+      "incomplete trips",
+      "delayed trips",
+      "ota trips",
+      "ota%",
+      "employee delay trips",
+      "traffic delay trips",
+      "driver delay trips"
+    ],
+    "reportColumns": [
+      "trip_date",
+      "bunit_id",
+      "total login trips",
+      "completed login trips",
+      "incomplete trips",
+      "delayed trips",
+      "ota trips",
+      "ota%",
+      "employee delay trips",
+      "traffic delay trips",
+      "driver delay trips"
+    ],
+    "reportHeaders": [
+      "Date",
+      "Facility",
+      "Total Login Trips",
+      "Completed Trips",
+      "Incomplete Trips",
+      "Delayed Trips",
+      "On Time Arrival",
+      "% On Time Arrival",
+      "Employee Delay",
+      "Driver Delay",
+      "Traffic Delay"
+    ],
+    "reportParams": {
+      "bunitIdKey": "bunit_id_1",
+      "startDateKey": "trip_date_1",
+      "endDateKey": "trip_date_2",
+      "otherKey": "",
+      "reportFilters": {
+        "office": "office",
+        "vendor": "vendor",
+        "shift": "shift",
+        "shiftType": "shiftType"
+      }
+    },
+    "dependentJobs": [
+      "TRIP_FACT"
+    ],
+    "detailedReportConfig": {
+      "pathURL": "/report",
+      "reportType": "Operations Metrics",
+      "reportName": "On_Time_Arrival_Complete_Trips"
+    }
+  },
+  {
+    "reportName": "On_Time_Departure_Summary_Report",
+    "displayName": "On Time Departure (OTD)",
+    "jasperReportName": "On_Time_Departure_Summary_Report",
+    "pathURL": "/report",
+    "jasperReportPath": "/reports/MoveinSync_Public/Reports/Reporting_Service/On_Time_Departure_Summary_Report",
+    "accessToRoles": [
+      "PROJECT_MANAGER",
+      "SITE_ADMIN",
+      "ADMIN",
+      "TRANSPORT_MANAGER",
+      "TRANSPORT_MANAGER_NO_BILLING",
+      "VENDOR_MANAGER",
+      "ROUTE_MANAGER",
+      "OPERATIONS"
+    ],
+    "isEnabled": True,
+    "sendEmail": True,
+    "reportType": "Operations Metrics",
+    "jasperColumns": [
+      "trip_date",
+      "bunit_id",
+      "total logout trips",
+      "completed logout trips",
+      "incomplete trips",
+      "delayed trips",
+      "otd trips",
+      "otd%",
+      "employee delay trips",
+      "traffic delay trips",
+      "driver delay trips",
+      "otd na"
+    ],
+    "reportColumns": [
+      "trip_date",
+      "bunit_id",
+      "total logout trips",
+      "completed logout trips",
+      "incomplete trips",
+      "delayed trips",
+      "otd trips",
+      "otd%",
+      "employee delay trips",
+      "traffic delay trips",
+      "driver delay trips",
+      "otd na"
+    ],
+    "reportHeaders": [
+      "Date",
+      "Facility",
+      "Total Logout Trips",
+      "Completed Trips",
+      "Incomplete Trips",
+      "Delayed Trips",
+      "On Time Departure",
+      "% On Time Departure",
+      "Employee Delay",
+      "Driver Delay",
+      "Traffic Delay",
+      "OTD N/A"
+    ],
+    "reportParams": {
+      "bunitIdKey": "bunit_id_1",
+      "startDateKey": "trip_date_1",
+      "endDateKey": "trip_date_2",
+      "otherKey": "",
+      "reportFilters": {
+        "office": "office",
+        "vendor": "vendor",
+        "tripDirection": "tripDirection",
+        "shift": "shift",
+        "shiftType": "shiftType"
+      }
+    },
+    "dependentJobs": [
+      "TRIP_FACT"
+    ],
+    "detailedReportConfig": {
+      "pathURL": "/report",
+      "reportType": "Operations Metrics",
+      "reportName": "On_Time_Departure_Complete_Trips"
+    }
+  },
+  {
+    "reportName": "On_Time_Arrival_Detailed_VendorWise_Report",
+    "displayName": "On Time Arrival (OTA)",
+    "pathURL": "/report",
+    "accessToRoles": [
+      "PROJECT_MANAGER",
+      "SITE_ADMIN",
+      "ADMIN",
+      "TRANSPORT_MANAGER",
+      "TRANSPORT_MANAGER_NO_BILLING",
+      "VENDOR_MANAGER",
+      "ROUTE_MANAGER",
+      "OPERATIONS"
+    ],
+    "isEnabled": True,
+    "sendEmail": True,
+    "reportType": "Operations Metrics",
+    "alertType": "",
+    "reportParams": {
+      "bunitIdKey": "bunit",
+      "startDateKey": "startDate",
+      "endDateKey": "endDate"
+    },
+    "onlyVendor": True,
+    "vendorRole": True,
+    "dependentJobs": [
+      "TRIP_FACT"
+    ]
+  },
+  {
+    "reportName": "On_Time_Departure_Detailed_VendorWise_Report",
+    "displayName": "On Time Departure (OTD)",
+    "pathURL": "/report",
+    "accessToRoles": [
+      "PROJECT_MANAGER",
+      "SITE_ADMIN",
+      "ADMIN",
+      "TRANSPORT_MANAGER",
+      "TRANSPORT_MANAGER_NO_BILLING",
+      "VENDOR_MANAGER",
+      "ROUTE_MANAGER",
+      "OPERATIONS"
+    ],
+    "isEnabled": True,
+    "sendEmail": True,
+    "reportType": "Operations Metrics",
+    "alertType": "",
+    "reportParams": {
+      "bunitIdKey": "bunit",
+      "startDateKey": "startDate",
+      "endDateKey": "endDate"
+    },
+    "onlyVendor": True,
+    "vendorRole": True,
+    "dependentJobs": [
+      "TRIP_FACT"
+    ]
+  },
+  {
+    "reportName": "IVR_USAGE_REPORT_INVOICE",
+    "displayName": "IVR Usage Invoice",
+    "jasperReportName": "IVR_Usage_Report",
+    "pathURL": "/report",
+    "jasperReportPath": "/reports/MoveinSync_Public/Reports/Reporting_Service/IVR_Usage_Report",
+    "accessToRoles": [
+      "PROJECT_MANAGER",
+      "SITE_ADMIN",
+      "ADMIN",
+      "TRANSPORT_MANAGER",
+      "TRANSPORT_MANAGER_NO_BILLING",
+      "VENDOR_MANAGER",
+      "ROUTE_MANAGER",
+      "OPERATIONS"
+    ],
+    "isEnabled": True,
+    "sendEmail": True,
+    "reportType": "Operations Metrics",
+    "schedulingDatesAllowed": [
+      3,
+      4,
+      5
+    ],
+    "jasperColumns": [
+      "trigger_time",
+      "call_id",
+      "feature_name",
+      "call_status",
+      "trip_id",
+      "emp_mobile",
+      "driver_contact",
+      "billed_units",
+      "second_caller_duration",
+      "recording_url",
+      "office",
+      "emp_id",
+      "planned_start_time",
+      "cab_id",
+      "call_duration"
+    ],
+    "reportColumns": [
+      "call_id",
+      "emp_id",
+      "emp_name",
+      "emp_mobile",
+      "driver_contact",
+      "trip_id",
+      "cab_id",
+      "trigger_time",
+      "planned_start_time",
+      "call_status",
+      "billed_units",
+      "call_duration",
+      "feature_name",
+      "recording_url"
+    ],
+    "reportHeaders": [
+      "Call Id",
+      "Emp Id",
+      "Emp Name",
+      "Emp Mobile",
+      "Driver Contact",
+      "Trip Id",
+      "Cab Id",
+      "Trigger Time",
+      "Planned Pickup Time",
+      "Call Status",
+      "Billed Units",
+      "Call Duration",
+      "Feature Name",
+      "Recording Url"
+    ],
+    "reportParams": {
+      "bunitIdKey": "bunitId",
+      "startDateKey": "startDate",
+      "endDateKey": "endDate",
+      "otherKey": "",
+      "reportFilters": {
+        "office": "office_1"
+      }
+    },
+    "dependentJobs": [
+      "EMP_FACT",
+      "IVR"
+    ]
+  },
+  {
+    "reportName": "COMMUNICATION_INVOICE",
+    "displayName": "Employee Communication Invoice",
+    "pathURL": "/report",
+    "accessToRoles": [
+      "PROJECT_MANAGER",
+      "SITE_ADMIN",
+      "ADMIN",
+      "TRANSPORT_MANAGER",
+      "TRANSPORT_MANAGER_NO_BILLING",
+      "VENDOR_MANAGER",
+      "ROUTE_MANAGER",
+      "OPERATIONS"
+    ],
+    "isEnabled": True,
+    "sendEmail": True,
+    "reportType": "Operations Metrics",
+    "schedulingDatesAllowed": [
+      3,
+      4,
+      5
+    ],
+    "redshiftColumns": [
+      "communication_request_time",
+      "recipient_uuid",
+      "business_context",
+      "communication_status",
+      "communication_channel_status_update_time",
+      "communication_channel",
+      "shift_type",
+      "shift_time",
+      "trip_id",
+      "communication_uuid",
+      "communication_channel_request_time",
+      "office",
+      "message_text"
+    ],
+    "reportParams": {
+      "bunitIdKey": "bunit_id",
+      "startDateKey": "start_date",
+      "endDateKey": "end_date",
+      "otherKey": "",
+      "reportFilters": {
+        "office": "office_1"
+      }
+    },
+    "dependentJobs": [
+      "COMMUNICATION",
+      "TRIP_FACT"
+    ]
+  },
+  {
+    "reportName": "CLICK_TO_CALL_INVOICE",
+    "displayName": "Click To Call Invoice",
+    "pathURL": "/report",
+    "jasperReportPath": "/reports/MoveinSync_Public/Reports/Reporting_Service/ClickToCallReport",
+    "accessToRoles": [
+      "PROJECT_MANAGER",
+      "SITE_ADMIN",
+      "ADMIN",
+      "TRANSPORT_MANAGER",
+      "TRANSPORT_MANAGER_NO_BILLING",
+      "VENDOR_MANAGER",
+      "ROUTE_MANAGER"
+    ],
+    "isEnabled": True,
+    "sendEmail": True,
+    "reportType": "Operations Metrics",
+    "alertType": "",
+    "schedulingDatesAllowed": [
+      3,
+      4,
+      5
+    ],
+    "jasperColumns": [
+      "call_id",
+      "trip_id",
+      "call_status",
+      "cab_id",
+      "emp_guid",
+      "time_of_call",
+      "call_billed_units",
+      "driver_call_duration",
+      "employee_call_duration",
+      "call_start_time",
+      "call_end_time",
+      "driver_hang_up_cause",
+      "employee_hang_up_cause",
+      "call_log_url",
+      "call_initiation_location",
+      "office",
+      "actual_cab_registration"
+    ],
+    "reportColumns": [
+      "call_id",
+      "trip_id",
+      "call_status",
+      "actual_cab_registration",
+      "emp_id",
+      "emp_name",
+      "time_of_call",
+      "call_initiation_location",
+      "driver_cont_no",
+      "emp_mobile",
+      "call_billed_units",
+      "call_duration",
+      "employee_call_duration",
+      "call_start_time",
+      "call_end_time",
+      "driver_hang_up_cause",
+      "employee_hang_up_cause",
+      "call_log_url",
+      "office"
+    ],
+    "reportHeaders": [
+      "Call ID",
+      "Trip ID",
+      "Call Status",
+      "Cab ID",
+      "Employee ID",
+      "Employee Name",
+      "Time Of Call",
+      "Call Initiation Location",
+      "Driver Phone Number",
+      "Employee Phone Number",
+      "Call Billed Units",
+      "Driver Call Duration",
+      "Employee Call Duration",
+      "Call Start Time",
+      "Call End Time",
+      "Driver Hang-Up Cause",
+      "Employee Hang-Up Cause",
+      "Call Log Url",
+      "Office"
+    ],
+    "reportParams": {
+      "bunitIdKey": "bunit_id_1",
+      "startDateKey": "startDate",
+      "endDateKey": "endDate",
+      "otherKey": "",
+      "reportFilters": {
+        "office": "office_1"
+      }
+    },
+    "dependentJobs": [
+      "TRIP_FACT",
+      "IVR"
+    ],
+    "downloadOnly": True
+  },
+  {
+    "reportName": "SAFE_REACH_VERIFICATION_REPORT_INVOICE",
+    "displayName": "Safe Reach Verification Invoice",
+    "jasperReportName": "Drop_Verification_Data",
+    "pathURL": "/report",
+    "jasperReportPath": "/reports/MoveinSync_Public/Reports/Reporting_Service/Drop_Verification_Data",
+    "accessToRoles": [
+      "PROJECT_MANAGER",
+      "SITE_ADMIN",
+      "ADMIN",
+      "TRANSPORT_MANAGER",
+      "TRANSPORT_MANAGER_NO_BILLING",
+      "VENDOR_MANAGER",
+      "ROUTE_MANAGER",
+      "OPERATIONS"
+    ],
+    "isEnabled": True,
+    "sendEmail": True,
+    "reportType": "Employee Security",
+    "schedulingDatesAllowed": [
+      3,
+      4,
+      5
+    ],
+    "jasperColumns": [
+      "bunit_id",
+      "employee_id",
+      "employee_name",
+      "gender",
+      "trip_id",
+      "trip_date",
+      "actual_vendor_cab_id",
+      "actual_cab_registeration",
+      "verification_status",
+      "verification_type",
+      "verification_time",
+      "shift_time",
+      "planned_pickup_time",
+      "actual_pickup_time",
+      "planned_drop_time",
+      "actual_drop_time",
+      "escort_name",
+      "verified_by",
+      "comments",
+      "profile_office"
+    ],
+    "reportColumns": [
+      "bunit_id",
+      "employee_id",
+      "employee_name",
+      "gender",
+      "emp_mobile",
+      "trip_id",
+      "trip_date",
+      "actual_vendor_cab_id",
+      "actual_cab_registeration",
+      "driver_name",
+      "driver_contact",
+      "verification_status",
+      "verification_type",
+      "verification_time",
+      "shift_time",
+      "planned_pickup_time",
+      "actual_pickup_time",
+      "planned_drop_time",
+      "actual_drop_time",
+      "escort_name",
+      "verified_by",
+      "comments",
+      "profile_office"
+    ],
+    "reportHeaders": [
+      "Facility",
+      "Employee Id",
+      "Employee Name",
+      "Gender",
+      "Employee Contact",
+      "Trip Id ",
+      "Trip Date",
+      "Cab Id ",
+      "Cab Reg No",
+      "Driver Name",
+      "Driver Contact",
+      "Verification Status",
+      "Verification Type",
+      "Verification Time",
+      "Logout Shift",
+      "Planned SignIn Time",
+      "Actual SignIn Time",
+      "Planned signoff time",
+      "Actual signoff time",
+      "Escort Name",
+      "VerifiedBy",
+      "Comments",
+      "Office"
+    ],
+    "reportParams": {
+      "bunitIdKey": "bunit_id_1",
+      "startDateKey": "pickup_time_1",
+      "endDateKey": "pickup_time_2",
+      "reportFilters": {
+        "office": "office_1",
+        "vendor": "vendor_id_1",
+        "shift": "shift_time",
+        "shiftType": "shift_time_type",
+        "tripDirection": "trip_direction"
+      },
+      "otherKey": ""
+    },
+    "dependentJobs": [
+      "DROP_VERIFICATION",
+      "EMP_FACT"
+    ]
+  },
+  {
+    "reportName": "ENHANCED_OTA_REPORT",
+    "displayName": "OTA Enhanced Report",
+    "pathURL": "/report",
+    "accessToRoles": [
+      "PROJECT_MANAGER",
+      "SITE_ADMIN",
+      "ADMIN",
+      "TRANSPORT_MANAGER",
+      "TRANSPORT_MANAGER_NO_BILLING",
+      "VENDOR_MANAGER",
+      "ROUTE_MANAGER",
+      "OPERATIONS"
+    ],
+    "isEnabled": True,
+    "sendEmail": True,
+    "reportType": "Operations Metrics",
+    "reportParams": {
+      "bunitIdKey": "bunit",
+      "startDateKey": "startDate",
+      "endDateKey": "endDate"
+    }
+  },
+  {
+    "reportName": "ENHANCED_OTD_REPORT",
+    "displayName": "OTD Enhanced Report",
+    "pathURL": "/report",
+    "accessToRoles": [
+      "PROJECT_MANAGER",
+      "SITE_ADMIN",
+      "ADMIN",
+      "TRANSPORT_MANAGER",
+      "TRANSPORT_MANAGER_NO_BILLING",
+      "VENDOR_MANAGER",
+      "ROUTE_MANAGER",
+      "OPERATIONS"
+    ],
+    "isEnabled": True,
+    "sendEmail": True,
+    "reportType": "Operations Metrics",
+    "reportParams": {
+      "bunitIdKey": "bunit",
+      "startDateKey": "startDate",
+      "endDateKey": "endDate"
+    }
+  },
+  {
+    "reportName": "ENHANCED_OTA_REPORT",
+    "displayName": "OTA Enhanced Report",
+    "pathURL": "/report",
+    "accessToRoles": [
+      "PROJECT_MANAGER",
+      "SITE_ADMIN",
+      "ADMIN",
+      "TRANSPORT_MANAGER",
+      "TRANSPORT_MANAGER_NO_BILLING",
+      "VENDOR_MANAGER",
+      "ROUTE_MANAGER",
+      "OPERATIONS"
+    ],
+    "isEnabled": True,
+    "sendEmail": True,
+    "reportType": "Operations Metrics",
+    "reportParams": {
+      "bunitIdKey": "bunit",
+      "startDateKey": "startDate",
+      "endDateKey": "endDate"
+    }
+  },
+  {
+    "reportName": "ENHANCED_OTD_REPORT",
+    "displayName": "OTD Enhanced Report",
+    "pathURL": "/report",
+    "accessToRoles": [
+      "PROJECT_MANAGER",
+      "SITE_ADMIN",
+      "ADMIN",
+      "TRANSPORT_MANAGER",
+      "TRANSPORT_MANAGER_NO_BILLING",
+      "VENDOR_MANAGER",
+      "ROUTE_MANAGER",
+      "OPERATIONS"
+    ],
+    "isEnabled": True,
+    "sendEmail": True,
+    "reportType": "Operations Metrics",
+    "reportParams": {
+      "bunitIdKey": "bunit",
+      "startDateKey": "startDate",
+      "endDateKey": "endDate"
+    }
+  }
+]
+
+    print(f"Total reports available: {len(data)}")
+
+    def modify_report(report, key, new_value):
+        """Applies the new value to the specified key in a single report."""
+        if key not in report:
+            print(f"❌ Key '{key}' not found in report '{report['reportName']}'. Skipping.")
+            return False
+
+        current_value = report[key]
+        print(f"\n🔑 Updating '{key}' in '{report['reportName']}'...")
+        print(f"  - Current value: {current_value}")
+        print(f"  - Current type: {type(current_value).__name__}")
+
+        try:
+            if isinstance(current_value, bool):
+                report[key] = new_value.lower() in ['true', 'yes', '1', 't']
+            elif isinstance(current_value, (int, float)):
+                if isinstance(current_value, int):
+                    report[key] = int(new_value)
+                else:
+                    report[key] = float(new_value)
+            elif isinstance(current_value, list):
+                report[key] = [item.strip() for item in new_value.split(',')]
+            elif isinstance(current_value, dict):
+                report[key] = json.loads(new_value)
+            else:
+                report[key] = new_value
+
+            print(f"  - ✅ Successfully updated to: {report[key]}")
+            return True
+        except (ValueError, json.JSONDecodeError) as e:
+            print(f"  - ❌ Error applying value: {e}. Value not changed.")
+            return False
+
+    # Main logic
+    print("\nAvailable Reports:")
+    for i, report in enumerate(data, 1):
+        print(f"{i}. {report['reportName']} - {report['displayName']}")
+
+    try:
+        selection_input = input(
+            "\nEnter report number(s) to modify (e.g., '1' for single, '1,3' for multiple, or 'all'): ").strip()
+
+        if selection_input.lower() == 'all':
+            reports_to_modify = data
+            print(f"✅ Selected **all** {len(data)} reports.")
+        elif ',' in selection_input:
+            indices = [int(i.strip()) - 1 for i in selection_input.split(',')]
+            if any(i < 0 or i >= len(data) for i in indices):
+                print("❌ Invalid report number(s)!")
+                return
+            reports_to_modify = [data[i] for i in indices]
+            print(f"✅ Selected **{len(reports_to_modify)}** reports.")
+        else:
+            report_index = int(selection_input) - 1
+            if report_index < 0 or report_index >= len(data):
+                print("❌ Invalid report number!")
+                return
+            reports_to_modify = [data[report_index]]
+            print(f"✅ Selected a **single** report.")
+
+    except (ValueError, IndexError):
+        print("❌ Please enter valid number(s) or 'all'!")
+        return
+
+    # Get the key and new value
+    print(f"\nAvailable keys for the first selected report: {list(reports_to_modify[0].keys())}")
+    key_to_change = input("\nEnter the key you want to change: ")
+    new_value_input = input(f"Enter the new value for '{key_to_change}': ")
+
+    # Apply the modification to all selected reports
+    print("\n--- Applying changes ---")
+    modified_count = 0
+    for report in reports_to_modify:
+        if modify_report(report, key_to_change, new_value_input):
+            modified_count += 1
+
+    print("\n--- Final Status ---")
+    print(f"Updated {modified_count} out of {len(reports_to_modify)} selected reports.")
+    print("Updated data:")
+    print(json.dumps(data, indent=2))
+
+
+change_key_value()
