@@ -1,0 +1,20 @@
+def trun_right():
+    turn_left()
+    turn_left()
+    turn_left()
+    
+while at_goal() != True:
+    if wall_in_front() == True:
+            turn_left()
+            move()
+            trun_right()    
+            move()
+            trun_right()    
+            move()
+            turn_left()
+    elif front_is_clear() == True:
+            move()
+          
+    
+
+    
