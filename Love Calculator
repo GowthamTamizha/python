@@ -1,0 +1,32 @@
+def calculate_love_score(name1, name2):
+    T = 0
+    R = 0
+    U = 0
+    E = 0
+
+    L = 0
+    O = 0
+    V = 0
+    name = name1 + name2
+    for i in name.lower():
+        if i == "t":
+            T += 1
+        elif i == "r":
+            R += 1
+        elif i == "u":
+            U += 1
+        elif i == "e":
+            E += 1
+        elif i == "l":
+            L += 1
+        elif i == "o":
+            O += 1
+        elif i == "v":
+            V += 1
+
+    value1 = T + R + U + E
+    value2 = L + O + V + E
+    final_value = str(value1) + str(value2)
+    print(final_value)
+
+calculate_love_score("Angela Yu","Jack Bauer")
